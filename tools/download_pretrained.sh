@@ -1,5 +1,5 @@
-mkdir pretrained &&
-cd pretrained &&
+mkdir pretrained && \
+cd pretrained && \
 wget -O bevfusion-det.pth https://www.dropbox.com/scl/fi/ulaz9z4wdwtypjhx7xdi3/bevfusion-det.pth?rlkey=ovusfi2rchjub5oafogou255v && \
 wget -O bevfusion-seg.pth https://www.dropbox.com/scl/fi/8lgd1hkod2a15mwry0fvd/bevfusion-seg.pth?rlkey=2tmgw7mcrlwy9qoqeui63tay9 && \
 wget -O lidar-only-det.pth https://www.dropbox.com/scl/fi/b1zvgrg9ucmv0wtx6pari/lidar-only-det.pth?rlkey=fw73bmdh57jxtudw6osloywah && \
