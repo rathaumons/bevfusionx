@@ -2,8 +2,9 @@ from .base_points import BasePoints
 from .cam_points import CameraPoints
 from .depth_points import DepthPoints
 from .lidar_points import LiDARPoints
+from .radar_points import RadarPoints
 
-__all__ = ["BasePoints", "CameraPoints", "DepthPoints", "LiDARPoints"]
+__all__ = ["BasePoints", "CameraPoints", "DepthPoints", "LiDARPoints", "RadarPoints"]
 
 
 def get_points_type(points_type):
@@ -22,9 +23,11 @@ def get_points_type(points_type):
         points_cls = LiDARPoints
     elif points_type == "DEPTH":
         points_cls = DepthPoints
+    elif points_type == "RADAR":
+        points_cls = RadarPoints
     else:
         raise ValueError(
-            'Only "points_type" of "CAMERA", "LIDAR", or "DEPTH"'
+            'Only "points_type" of "CAMERA", "LIDAR", "RADAR", or "DEPTH"'
             f" are supported, got {points_type}"
         )
 
