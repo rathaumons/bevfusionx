@@ -34,7 +34,7 @@ class GTDepth:
         def _to_tensor(x):
             x = _unwrap(x)
             x = getattr(x, "tensor", x)
-            return x if torch.is_tensor(x) else torch.as_tensor(x)
+            return x if torch.is_tensor(x) else torch.as_tensor(x, dtype=torch.float32)
 
         sensor2ego = _to_tensor(data["camera2ego"])
         cam_intrinsic = _to_tensor(data["camera_intrinsics"])
@@ -46,6 +46,12 @@ class GTDepth:
 
         points = _to_tensor(data["points"])
         img = _unwrap(data["img"])
+        if isinstance(img, (list, tuple)):
+            img = torch.stack(
+                [im if torch.is_tensor(im) else torch.as_tensor(im) for im in img]
+            )
+        elif not torch.is_tensor(img):
+            img = torch.as_tensor(img)
 
         if self.keyframe_only:
             points = points[points[:, 4] == 0]
