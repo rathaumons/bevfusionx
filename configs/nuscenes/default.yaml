@@ -164,6 +164,9 @@ train_pipeline:
   -
     type: PointShuffle
   -
+    type: GTDepth
+    keyframe_only: true
+  -
     type: DefaultFormatBundle3D
     classes: ${object_classes}
   -
@@ -174,6 +177,7 @@ train_pipeline:
       - gt_bboxes_3d
       - gt_labels_3d
       - gt_masks_bev
+      - depths
     meta_keys:
       - camera_intrinsics
       - camera2ego
@@ -183,9 +187,6 @@ train_pipeline:
       - lidar2image
       - img_aug_matrix
       - lidar_aug_matrix
-  -
-    type: GTDepth
-    keyframe_only: true 
 
 test_pipeline:
   -
