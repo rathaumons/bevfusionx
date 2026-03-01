@@ -32,10 +32,7 @@ class BaseTransform(nn.Module):
         ybound: Tuple[float, float, float],
         zbound: Tuple[float, float, float],
         dbound: Tuple[float, float, float],
-        use_points='lidar', 
-        depth_input='scalar',
-        height_expand=None,
-        add_depth_features=None,
+        use_points='lidar',
     ) -> None:
         super().__init__()
         self.in_channels = in_channels
@@ -47,19 +44,6 @@ class BaseTransform(nn.Module):
         self.dbound = dbound
         self.use_points = use_points
         assert use_points in ['radar', 'lidar']
-        self.depth_input=depth_input
-        assert depth_input in ['scalar', 'one-hot']
-
-        # Set default according to use_points if not provided
-        # True for radar, False for lidar -> https://github.com/mit-han-lab/bevfusion/issues/478#issuecomment-1677947282
-        if height_expand is None:
-            self.height_expand = (use_points == 'radar')
-        else:
-            self.height_expand = height_expand
-        if add_depth_features is None:
-            self.add_depth_features = (use_points == 'radar')
-        else:
-            self.add_depth_features = add_depth_features
 
         dx, bx, nx = gen_dx_bx(self.xbound, self.ybound, self.zbound)
         self.dx = nn.Parameter(dx, requires_grad=False)
@@ -245,6 +229,46 @@ class BaseTransform(nn.Module):
 
 
 class BaseDepthTransform(BaseTransform):
+    def __init__(
+        self,
+        in_channels: int,
+        out_channels: int,
+        image_size: Tuple[int, int],
+        feature_size: Tuple[int, int],
+        xbound: Tuple[float, float, float],
+        ybound: Tuple[float, float, float],
+        zbound: Tuple[float, float, float],
+        dbound: Tuple[float, float, float],
+        use_points='lidar',
+        depth_input='scalar',
+        height_expand=None,
+        add_depth_features=None,
+    ) -> None:
+        super().__init__(
+            in_channels=in_channels,
+            out_channels=out_channels,
+            image_size=image_size,
+            feature_size=feature_size,
+            xbound=xbound,
+            ybound=ybound,
+            zbound=zbound,
+            dbound=dbound,
+            use_points=use_points,
+        )
+        self.depth_input = depth_input
+        assert depth_input in ['scalar', 'one-hot']
+
+        # Set default according to use_points if not provided
+        # True for radar, False for lidar -> https://github.com/mit-han-lab/bevfusion/issues/478#issuecomment-1677947282
+        if height_expand is None:
+            self.height_expand = (use_points == 'radar')
+        else:
+            self.height_expand = height_expand
+        if add_depth_features is None:
+            self.add_depth_features = (use_points == 'radar')
+        else:
+            self.add_depth_features = add_depth_features
+
     @force_fp32()
     def forward(
         self,
