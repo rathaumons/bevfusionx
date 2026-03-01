@@ -120,7 +120,7 @@ If you have newer‑generation hardware or prefer an isolated, reproducible envi
 
   ```bash
   cd ~ # or choose your preferred location
-  git clone https://github.com/rathaumons/bevfusion.git
+  git clone https://github.com/rathaumons/bevfusionx.git
   cd bevfusion
   pip install -r requirements.txt
   ```
