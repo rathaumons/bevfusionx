@@ -28,7 +28,7 @@ def make_cuda_ext(
             # "-gencode=arch=compute_120,code=sm_120",  # CUDA 12.8 or newer (Doesn't support)
         ]
         sources += sources_cuda
-    elif (torch.cuda.is_available() and torch.version.hip is not None) or os.getenv("FORCE_ROCM", "0") == 1:
+    elif (torch.cuda.is_available() and torch.version.hip is not None) or os.getenv("FORCE_ROCM", "0") == "1":
         define_macros += [("WITH_ROCM", None)]
         extension = CUDAExtension
         extra_compile_args["hipcc"] = extra_args + [
