@@ -11,3 +11,4 @@ model:
         depth_input: one-hot
         height_expand: true
         add_depth_features: true
+        depth_features_dims: 45

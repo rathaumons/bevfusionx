@@ -509,6 +509,7 @@ class AwareDBEVDepth(BaseDepthTransform):
         bevdepth_refine: bool = True, 
         depth_loss_factor: float = 3.0, 
         add_depth_features = False,
+        depth_features_dims: int = 45,
     ) -> None:
         super().__init__(
             in_channels=in_channels,
@@ -542,7 +543,7 @@ class AwareDBEVDepth(BaseDepthTransform):
 
         dtransform_in_channels = 1 if depth_input=='scalar' else self.D
         if self.add_depth_features:
-            dtransform_in_channels += 45
+            dtransform_in_channels += depth_features_dims
 
         if depth_input == 'scalar':
             self.dtransform = nn.Sequential(
