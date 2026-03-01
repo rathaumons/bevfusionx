@@ -241,6 +241,9 @@ test_pipeline:
     mean: [0.485, 0.456, 0.406]
     std: [0.229, 0.224, 0.225]
   -
+    type: GTDepth
+    keyframe_only: true
+  -
     type: DefaultFormatBundle3D
     classes: ${object_classes}
   -
@@ -251,6 +254,7 @@ test_pipeline:
       - gt_bboxes_3d
       - gt_labels_3d
       - gt_masks_bev
+      - depths
     meta_keys:
       - camera_intrinsics
       - camera2ego
@@ -260,9 +264,6 @@ test_pipeline:
       - lidar2image
       - img_aug_matrix
       - lidar_aug_matrix
-  -
-    type: GTDepth
-    keyframe_only: true 
 
 data:
   samples_per_gpu: 4
