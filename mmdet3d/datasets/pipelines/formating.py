@@ -52,8 +52,17 @@ class DefaultFormatBundle3D:
             assert isinstance(results["points"], BasePoints)
             results["points"] = DC(results["points"].tensor)
 
-        if "radar" in results:
-            results["radar"] = DC(results["radar"].tensor)
+        # if "radar" in results:
+        #     results["radar"] = DC(results["radar"].tensor)
+        if "radar" in results: # SAFER handling
+            radar = results["radar"]
+            if isinstance(radar, BasePoints):
+                results["radar"] = DC(radar.tensor)
+            elif torch.is_tensor(radar):
+                results["radar"] = DC(radar)
+            else:
+                # del results["radar"]
+                pass
 
         for key in ["voxels", "coors", "voxel_centers", "num_points"]:
             if key not in results:
