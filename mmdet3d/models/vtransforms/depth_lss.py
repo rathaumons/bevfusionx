@@ -79,7 +79,7 @@ class DepthLSSTransform(BaseDepthTransform):
             self.downsample = nn.Identity()
 
     @force_fp32()
-    def get_cam_feats(self, x, d):
+    def get_cam_feats(self, x, d, mats_dict=None):
         B, N, C, fH, fW = x.shape
 
         d = d.view(B * N, *d.shape[2:])

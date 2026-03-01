@@ -1,3 +1,4 @@
+import inspect
 from typing import Tuple
 
 from mmcv.runner import force_fp32
@@ -59,7 +60,7 @@ class LSSTransform(BaseTransform):
             self.downsample = nn.Identity()
 
     @force_fp32()
-    def get_cam_feats(self, x):
+    def get_cam_feats(self, x, mats_dict=None):
         B, N, C, fH, fW = x.shape
 
         x = x.view(B * N, C, fH, fW)
@@ -73,6 +74,9 @@ class LSSTransform(BaseTransform):
         return x
 
     def forward(self, *args, **kwargs):
+        num_params = len(inspect.signature(BaseTransform.forward).parameters) - 1
+        if len(args) > num_params:
+            args = args[:num_params]
         x = super().forward(*args, **kwargs)
         x = self.downsample(x)
         return x
