@@ -26,12 +26,30 @@ class RadarPoints(BasePoints):
 
     def flip(self, bev_direction="horizontal"):
         """Flip the boxes in BEV along given BEV direction."""
+        vx_idx = None
+        vy_idx = None
+        if isinstance(self.attribute_dims, dict):
+            vx_val = self.attribute_dims.get('vx')
+            vy_val = self.attribute_dims.get('vy')
+            if isinstance(vx_val, int):
+                vx_idx = vx_val
+            if isinstance(vy_val, int):
+                vy_idx = vy_val
+
+        num_dims = self.tensor.size(1)
+
         if bev_direction == "horizontal":
             self.tensor[:, 1] = -self.tensor[:, 1]
-            self.tensor[:, 4] = -self.tensor[:, 4]
+            if vy_idx is not None and 0 <= vy_idx < num_dims:
+                self.tensor[:, vy_idx] = -self.tensor[:, vy_idx]
+            elif num_dims > 4:
+                self.tensor[:, 4] = -self.tensor[:, 4]
         elif bev_direction == "vertical":
             self.tensor[:, 0] = -self.tensor[:, 0]
-            self.tensor[:, 3] = -self.tensor[:, 3]
+            if vx_idx is not None and 0 <= vx_idx < num_dims:
+                self.tensor[:, vx_idx] = -self.tensor[:, vx_idx]
+            elif num_dims > 3:
+                self.tensor[:, 3] = -self.tensor[:, 3]
 
     def jitter(self, amount):
         jitter_noise = torch.randn(self.tensor.shape[0], 3)

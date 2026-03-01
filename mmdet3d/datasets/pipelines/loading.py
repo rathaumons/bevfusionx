@@ -781,8 +781,17 @@ class LoadRadarPointsMultiSweeps(object):
         if self.normalize:
             points = self.normalize_feats(points, self.normalize_dims)
         
+        # Determine which column indices correspond to vx and vy (vx_comp and
+        # vy_comp at original format indices 8 and 9) after use_dim selection.
+        _attr_dims = {}
+        if 8 in self.use_dim:
+            _attr_dims['vx'] = self.use_dim.index(8)
+        if 9 in self.use_dim:
+            _attr_dims['vy'] = self.use_dim.index(9)
+        attribute_dims = _attr_dims if _attr_dims else None
+
         points = RadarPoints(
-            points, points_dim=points.shape[-1], attribute_dims=None
+            points, points_dim=points.shape[-1], attribute_dims=attribute_dims
         )
         
         results['radar'] = points
