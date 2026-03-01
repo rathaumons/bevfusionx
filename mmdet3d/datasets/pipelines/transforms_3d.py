@@ -54,6 +54,7 @@ class GTDepth:
             img = torch.as_tensor(img, dtype=torch.float32)
         else:
             img = img.float()
+        data["img"] = img
 
         if self.keyframe_only:
             points = points[points[:, 4] == 0]
