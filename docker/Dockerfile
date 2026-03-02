@@ -50,7 +50,7 @@ RUN dos2unix /root/.bashrc
 # Base Python requirements
 # ------------------------------------------------------------
 RUN source /root/miniconda3/bin/activate bevfusion && \
-    pip install -U pip wheel "setuptools==59.5.0" && \
+    pip install -U pip wheel setuptools==59.5.0 && \
     pip install numpy==1.23.5 "opencv-python<4.6"
 
 RUN source /root/miniconda3/bin/activate bevfusion && \
@@ -91,7 +91,7 @@ RUN source /root/miniconda3/bin/activate bevfusion && \
 # ------------------------------------------------------------
 
 # Force CUDA
-ARG TORCH_CUDA_ARCH_LIST="7.0 7.5 8.6"
+ARG TORCH_CUDA_ARCH_LIST="7.5;8.0;8.6"
 ENV FORCE_CUDA="1"
 ENV TORCH_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST}"
 
