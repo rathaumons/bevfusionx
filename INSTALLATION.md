@@ -23,7 +23,7 @@ This guide walks you through installing the project directly on your machine. If
 
 - Install `opencv-python` and `numpy`:
 
-  ```
+  ```bash
   pip install pip wheel "setuptools<82"  # MUST DO !!!
   pip install numpy==1.26.4 "opencv-python<4.12"
   ```
