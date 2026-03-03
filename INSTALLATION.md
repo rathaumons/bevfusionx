@@ -121,7 +121,7 @@ This guide walks you through installing the project directly on your machine. If
 - Clone the repo and install Python Packages:
 
   ```bash
-  cd ~ # or choose your preferred location
+  cd ~  # or choose your preferred location
   git clone https://github.com/rathaumons/bevfusionx.git
   cd bevfusion
   pip install -r requirements.txt
