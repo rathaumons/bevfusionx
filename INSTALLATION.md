@@ -1,8 +1,10 @@
 # Installation 🚀
 
-This guide walks you through installing the project directly on your machine. Note that because the project has very limited and strict requirements (Locked to [CUDA 11.3](https://docs.nvidia.com/cuda/archive/11.3.1/)), this installation path may only work reliably on older or specific hardware.
+This guide walks you through installing the project directly on your machine. If you have newer‑generation hardware or prefer an isolated, reproducible environment, you can instead use Docker.
 
-If you have newer‑generation hardware or prefer an isolated, reproducible environment, you can instead use [Docker 🐳](docker).
+👉 **For [CUDA 11.3](https://github.com/rathaumons/bevfusionx/blob/main/INSTALLATION.md) | [Docker 🐳](https://github.com/rathaumons/bevfusionx/tree/main/docker)** ✅
+
+👉 For [CUDA 12.1](https://github.com/rathaumons/bevfusionx/blob/cu121/INSTALLATION.md) | [Docker 🐳](https://github.com/rathaumons/bevfusionx/tree/cu121/docker)
 
 ## Prepare prerequisites
 
