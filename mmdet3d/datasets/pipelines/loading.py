@@ -300,10 +300,10 @@ class LoadBEVSegmentation:
         )
         # masks = masks[:, ::-1, :].copy()
         masks = masks.transpose(0, 2, 1)
-        masks = masks.astype(np.bool)
+        masks = masks.astype(np.bool_)
 
         num_classes = len(self.classes)
-        labels = np.zeros((num_classes, *self.canvas_size), dtype=np.long)
+        labels = np.zeros((num_classes, *self.canvas_size), dtype=np.longlong)
         for k, name in enumerate(self.classes):
             for layer_name in mappings[name]:
                 index = layer_names.index(layer_name)

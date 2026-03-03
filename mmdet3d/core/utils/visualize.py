@@ -169,7 +169,7 @@ def visualize_map(
     classes: List[str],
     background: Tuple[int, int, int] = (240, 240, 240),
 ) -> None:
-    assert masks.dtype == np.bool, masks.dtype
+    assert masks.dtype == np.bool_, masks.dtype
 
     canvas = np.zeros((*masks.shape[-2:], 3), dtype=np.uint8)
     canvas[:] = background

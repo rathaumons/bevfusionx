@@ -30,7 +30,7 @@ int gather_points_wrapper(int b, int c, int n, int npoints,
   const int *idx = idx_tensor.data_ptr<int>();
   float *out = out_tensor.data_ptr<float>();
 
-  cudaStream_t stream = at::cuda::getCurrentCUDAStream().stream();
+  cudaStream_t stream = c10::cuda::getCurrentCUDAStream().stream();
   gather_points_kernel_launcher(b, c, n, npoints, points, idx, out, stream);
   return 1;
 }
@@ -43,7 +43,7 @@ int gather_points_grad_wrapper(int b, int c, int n, int npoints,
   const int *idx = idx_tensor.data_ptr<int>();
   float *grad_points = grad_points_tensor.data_ptr<float>();
 
-  cudaStream_t stream = at::cuda::getCurrentCUDAStream().stream();
+  cudaStream_t stream = c10::cuda::getCurrentCUDAStream().stream();
   gather_points_grad_kernel_launcher(b, c, n, npoints, grad_out, idx,
                                      grad_points, stream);
   return 1;

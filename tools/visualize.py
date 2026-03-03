@@ -125,7 +125,7 @@ def main() -> None:
 
         if args.mode == "gt" and "gt_masks_bev" in data:
             masks = data["gt_masks_bev"].data[0].numpy()
-            masks = masks.astype(np.bool)
+            masks = masks.astype(np.bool_)
         elif args.mode == "pred" and "masks_bev" in outputs[0]:
             masks = outputs[0]["masks_bev"].numpy()
             masks = masks >= args.map_score

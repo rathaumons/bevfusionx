@@ -34,7 +34,7 @@ int ball_query_wrapper(int b, int n, int m, float min_radius, float max_radius, 
   const float *xyz = xyz_tensor.data_ptr<float>();
   int *idx = idx_tensor.data_ptr<int>();
 
-  cudaStream_t stream = at::cuda::getCurrentCUDAStream().stream();
+  cudaStream_t stream = c10::cuda::getCurrentCUDAStream().stream();
   ball_query_kernel_launcher(b, n, m, min_radius, max_radius,
                              nsample, new_xyz, xyz, idx, stream);
   return 1;
