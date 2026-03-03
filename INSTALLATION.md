@@ -23,9 +23,9 @@ This guide walks you through installing the project directly on your machine. If
 
 - Install `opencv-python` and `numpy`:
 
-  ```
-  pip install "pip<23" "setuptools==59.5.0" "wheel<0.40" # MUST DO !!!
-  pip install "numpy==1.23.5" "opencv-python<4.6"
+  ```bash
+  pip install -U pip wheel setuptools==59.5.0  # MUST DO !!!
+  pip install numpy==1.23.5 "opencv-python<4.6"
   ```
 
 - Install [PyTorch](https://pytorch.org/) 1.10.2 + CUDA 11.3 (Max support: `compute_86`, `sm_86`):
@@ -46,7 +46,7 @@ This guide walks you through installing the project directly on your machine. If
 
   </details>
 
-- Install OpenMPI v4.0.4 (CUDA):
+- Install [OpenMPI v4.0.4](https://www.open-mpi.org/software/ompi/v4.0/) (CUDA):
 
   <details><summary>Show more details</summary>
 
@@ -90,7 +90,7 @@ This guide walks you through installing the project directly on your machine. If
 
   </details>
 
-- Install MMCV v1.4.0 (CUDA):
+- Install [MMCV v1.4.0](https://github.com/open-mmlab/mmcv/releases/tag/v1.4.0) (CUDA):
 
   <details><summary>Show more details</summary>
 
