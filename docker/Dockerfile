@@ -91,7 +91,9 @@ RUN source /root/miniconda3/bin/activate bevfusion && \
 # ------------------------------------------------------------
 
 # Force CUDA
-ARG TORCH_CUDA_ARCH_LIST="7.5;8.0;8.6"
+# For compute capability, see: 
+# https://developer.nvidia.com/cuda/gpus
+ARG TORCH_CUDA_ARCH_LIST="7.5;8.6"
 ENV FORCE_CUDA="1"
 ENV TORCH_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST}"
 
