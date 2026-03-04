@@ -227,4 +227,8 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    finally:
+        if torch.distributed.is_initialized():
+            torch.distributed.destroy_process_group()
