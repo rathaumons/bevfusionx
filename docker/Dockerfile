@@ -75,8 +75,6 @@ ENV OMPI_MCA_plm_rsh_agent=sh
 # ------------------------------------------------------------
 # OpenMPI 4.0.7 with CUDA
 # ------------------------------------------------------------
-
-# Intall
 RUN source /root/miniconda3/bin/activate bevfusion && \
     cd /root && \
     wget https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-4.0.7.tar.gz && \
@@ -97,12 +95,13 @@ ARG TORCH_CUDA_ARCH_LIST="8.6;8.9"
 ENV FORCE_CUDA="1"
 ENV TORCH_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST}"
 
-# Install
+# Build and install
+ARG MMCV_REF=v1.7.3-bevfusionx
 RUN source /root/miniconda3/bin/activate bevfusion && \
     cd /root && \
-    wget -O mmcv-1.7.3.tar.gz https://github.com/rathaROG/mmcv/archive/refs/tags/v1.7.3.tar.gz && \
-    tar -xvf mmcv-1.7.3.tar.gz && \
-    cd mmcv-1.7.3 && \
+    wget -O mmcv.tar.gz https://github.com/rathaROG/mmcv/archive/refs/tags/${MMCV_REF}.tar.gz && \
+    mkdir -p mmcv && tar -xzf mmcv.tar.gz --strip-components=1 -C mmcv && \
+    cd mmcv && \
     MAKEFLAGS="-j$(nproc)" MMCV_WITH_OPS=1 pip install -e . --no-build-isolation -v
 
 # ------------------------------------------------------------
@@ -143,7 +142,7 @@ RUN source /root/miniconda3/bin/activate bevfusion && \
     rm -rf /tmp/* /var/tmp/* && \
     rm -rf /root/.cache/* && \
     rm -rf /root/openmpi-4.0.7.tar.gz && \
-    rm -rf /root/mmcv-1.7.3.tar.gz
+    rm -rf /root/mmcv.tar.gz
 
 WORKDIR /workspace
 CMD ["bash"]
