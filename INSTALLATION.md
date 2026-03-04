@@ -6,11 +6,13 @@ This guide walks you through installing the project directly on your machine. If
 
 👉 For [CUDA 12.1](https://github.com/rathaumons/bevfusionx/blob/cu121/INSTALLATION.md) | [Docker 🐳](https://github.com/rathaumons/bevfusionx/tree/cu121/docker)
 
+👉 For [CUDA 12.6](https://github.com/rathaumons/bevfusionx/blob/cu126/INSTALLATION.md) | [Docker 🐳](https://github.com/rathaumons/bevfusionx/tree/cu126/docker)
+
 ## Prepare prerequisites
 
 - Only Linux
 - Only gcc/g++ 9; otherwise, errors will occur later in some builds.
-- Only [CUDA 11.3](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/) & [cuDNN 8.9.7](https://docs.nvidia.com/deeplearning/cudnn/latest/installation/linux.html)
+- Only [CUDA 11.3](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/) & [cuDNN 8.9](https://docs.nvidia.com/deeplearning/cudnn/latest/installation/linux.html)
 - Only Python 3.8/3.9 -> `conda create --name bevfusion python=3.9`
 
 ## Install requirements and build
@@ -36,12 +38,6 @@ This guide walks you through installing the project directly on your machine. If
 
     ```bash
     pip install torch==1.10.2 torchvision==0.11.3 --index-url https://download.pytorch.org/whl/cu113
-    ```
-
-  - or conda:
-
-    ```bash
-    conda install pytorch==1.10.2 torchvision==0.11.3 cudatoolkit=11.3 -c pytorch -c conda-forge
     ```
 
   </details>
@@ -90,7 +86,7 @@ This guide walks you through installing the project directly on your machine. If
 
   </details>
 
-- Install [MMCV v1.4.0](https://github.com/open-mmlab/mmcv/releases/tag/v1.4.0) (CUDA):
+- Install [MMCV v1.4.0](https://github.com/rathaROG/mmcv/releases/tag/v1.4.0) (CUDA):
 
   <details><summary>Show more details</summary>
 
@@ -98,15 +94,15 @@ This guide walks you through installing the project directly on your machine. If
 
     ```bash
     cd ~
-    wget -O mmcv-1.4.0.tar.gz https://github.com/open-mmlab/mmcv/archive/refs/tags/v1.4.0.tar.gz
-    tar -xvf mmcv-1.4.0.tar.gz
+    wget -O mmcv.tar.gz https://github.com/rathaROG/mmcv/archive/refs/tags/v1.4.0.tar.gz
+    mkdir -p mmcv && tar -xzf mmcv.tar.gz --strip-components=1 -C mmcv
     ```
 
   - Config cmake, build, and install:
 
     ```bash
-    cd mmcv-1.4.0
-    MAKEFLAGS="-j$(nproc)" MMCV_WITH_OPS=1 pip install -e . -v
+    cd mmcv
+    MAKEFLAGS="-j$(nproc)" MMCV_WITH_OPS=1 pip install -e . --no-build-isolation -v
     ```
 
   - Quick test:
