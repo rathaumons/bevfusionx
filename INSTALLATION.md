@@ -4,13 +4,15 @@ This guide walks you through installing the project directly on your machine. If
 
 👉 For [CUDA 11.3](https://github.com/rathaumons/bevfusionx/blob/main/INSTALLATION.md) | [Docker 🐳](https://github.com/rathaumons/bevfusionx/tree/main/docker)
 
-👉 **For [CUDA 12.1](https://github.com/rathaumons/bevfusionx/blob/cu121/INSTALLATION.md) | [Docker 🐳](https://github.com/rathaumons/bevfusionx/tree/cu121/docker)** ✅
+👉 For [CUDA 12.1](https://github.com/rathaumons/bevfusionx/blob/cu121/INSTALLATION.md) | [Docker 🐳](https://github.com/rathaumons/bevfusionx/tree/cu121/docker)
+
+👉 **For [CUDA 12.6](https://github.com/rathaumons/bevfusionx/blob/cu126/INSTALLATION.md) | [Docker 🐳](https://github.com/rathaumons/bevfusionx/tree/cu126/docker)** ✅
 
 ## Prepare prerequisites
 
 - Only Linux
 - Only gcc/g++ 9; otherwise, errors will occur later in some builds.
-- Only [CUDA 12.1](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/) & [cuDNN 8.9.7](https://docs.nvidia.com/deeplearning/cudnn/latest/installation/linux.html)
+- Only [CUDA 12.6](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/) & [cuDNN 9.0](https://docs.nvidia.com/deeplearning/cudnn/latest/installation/linux.html)
 - Only Python 3.11 -> `conda create --name bevfusion python=3.11`
 
 ## Install requirements and build
@@ -28,14 +30,14 @@ This guide walks you through installing the project directly on your machine. If
   pip install numpy==1.26.4 "opencv-python<4.12"
   ```
 
-- Install [PyTorch](https://pytorch.org/) 2.2.2 + CUDA 12.1 (Max support: `compute_90`, `sm_90`):
+- Install [PyTorch](https://pytorch.org/) 2.10.0 + CUDA 12.6 (Max support: `compute_90`, `sm_90`):
 
   <details><summary>Show more details</summary>
 
   - pip (recommended):
 
     ```bash
-    pip install torch==2.2.2 torchvision==0.17.2 --index-url https://download.pytorch.org/whl/cu121
+    pip install torch==2.10.0 torchvision==0.25.0 --index-url https://download.pytorch.org/whl/cu126
     ```
 
   </details>
@@ -84,7 +86,7 @@ This guide walks you through installing the project directly on your machine. If
 
   </details>
 
-- Install [MMCV v1.7.3](https://github.com/rathaROG/mmcv/releases/tag/v1.7.3) (CUDA):
+- Install [MMCV v1.7.3](https://github.com/rathaROG/mmcv/releases/tag/v1.7.3-bevfusionx) (CUDA):
 
   <details><summary>Show more details</summary>
 
@@ -92,14 +94,14 @@ This guide walks you through installing the project directly on your machine. If
 
     ```bash
     cd ~
-    wget -O https://github.com/rathaROG/mmcv/archive/refs/tags/v1.7.3.tar.gz
-    tar -xvf mmcv-1.7.3.tar.gz
+    wget -O mmcv.tar.gz https://github.com/rathaROG/mmcv/archive/refs/tags/v1.7.3-bevfusionx.tar.gz
+    mkdir -p mmcv && tar -xzf mmcv.tar.gz --strip-components=1 -C mmcv
     ```
 
   - Config cmake, build, and install:
 
     ```bash
-    cd mmcv-1.7.3
+    cd mmcv
     MAKEFLAGS="-j$(nproc)" MMCV_WITH_OPS=1 pip install -e . --no-build-isolation -v
     ```
 
@@ -118,7 +120,7 @@ This guide walks you through installing the project directly on your machine. If
   cd ~  # or choose your preferred location
   git clone https://github.com/rathaumons/bevfusionx.git
   cd bevfusion
-  git checkout cu121  # IMPORTANT !!!
+  git checkout cu126  # IMPORTANT !!!
   pip install -r requirements.txt
   ```
 
