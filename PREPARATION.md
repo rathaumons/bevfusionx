@@ -4,7 +4,7 @@
 
 - For nuScenes dataset:
 
-  - Default path [`bevfusion/data/nuscenes`](./data/nuscenes):
+  - Default path [`bevfusionx/data/nuscenes`](./data/nuscenes):
 
     ```
     bevfusion
@@ -30,7 +30,7 @@
     python tools/create_data.py nuscenes --root-path ./data/nuscenes --out-dir ./data/nuscenes --extra-tag nuscenes --version v1.0-mini
     ```
 
-  - All [available versions here](https://github.com/rathaumons/bevfusion/blob/main/tools/data_converter/nuscenes_converter.py#L64): `available_vers = ["v1.0-trainval", "v1.0-test", "v1.0-mini"]`
+  - All [available versions here](https://github.com/rathaumons/bevfusionx/blob/cu121/tools/data_converter/nuscenes_converter.py#L62): `available_vers = ["v1.0-trainval", "v1.0-test", "v1.0-mini"]`
 
   - More info: [mmdetection3d/docs/en/datasets/nuscenes_det.md](https://github.com/open-mmlab/mmdetection3d/blob/1.0/docs/en/datasets/nuscenes_det.md)
 
