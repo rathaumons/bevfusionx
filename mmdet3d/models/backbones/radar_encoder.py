@@ -1,3 +1,5 @@
+# Added by UMONS-Numediart, Ratha SIV in 2026.
+
 from torch import nn
 
 from typing import Any, Dict

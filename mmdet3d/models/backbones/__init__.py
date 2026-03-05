@@ -1,3 +1,5 @@
+# Modified by UMONS-Numediart, Ratha SIV in 2026.
+
 from mmdet.models.backbones import SSDVGG, HRNet, ResNet, ResNetV1d, ResNeXt
 
 from .resnet import *

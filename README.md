@@ -6,7 +6,7 @@
 
 All sensor modalities (**Camera ✓ LiDAR ✓ RADAR ✓**) are supported and have been thoroughly tested. 😉
 
-## Quick Start 🚀
+## 🚀 Quick Start
 
 - **Installation:**
   - [CUDA 12.6](https://github.com/rathaumons/bevfusionx/blob/cu126/INSTALLATION.md) · [Docker 🐳](https://github.com/rathaumons/bevfusionx/tree/cu126/docker)
@@ -19,6 +19,7 @@ All sensor modalities (**Camera ✓ LiDAR ✓ RADAR ✓**) are supported and hav
 - **Visualization:**
   - [VISUALIZATION.md](VISUALIZATION.md)
 
-## License 📝
+## 📝 License
 
+[![NOTICE](https://img.shields.io/badge/NOTICE-Present-blue)](NOTICE)
 [![LICENSE](https://img.shields.io/badge/LICENSE-Apache_2.0-blue)](LICENSE)

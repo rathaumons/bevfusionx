@@ -1,4 +1,6 @@
+# Modified by UMONS-Numediart, Ratha SIV in 2026.
 # Copyright (c) OpenMMLab. All rights reserved.
+
 import numpy as np
 from mmcv.parallel import DataContainer as DC
 

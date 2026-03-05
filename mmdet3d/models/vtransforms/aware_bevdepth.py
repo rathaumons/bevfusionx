@@ -1,3 +1,5 @@
+# Added by UMONS-Numediart, Ratha SIV in 2026.
+
 from typing import Tuple
 
 from mmcv.cnn import build_conv_layer
