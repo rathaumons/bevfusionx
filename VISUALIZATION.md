@@ -6,7 +6,7 @@ Default command for visualization:
 torchpack dist-run -np [number of GPU] python tools/visualize.py [config file] [extra options]
 ```
 
-For more details, see [visualize.py](https://github.com/rathaumons/bevfusion/blob/main/tools/visualize.py).
+For more details, see [visualize.py](https://github.com/rathaumons/bevfusionx/blob/cu113/tools/visualize.py).
 
 ## Ground-truth Visualization:
 
