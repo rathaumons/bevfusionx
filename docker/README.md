@@ -31,7 +31,7 @@ For the original fully manual, step-by-step dev notes, see: [`dev_note.md`](dev_
 
   ```bash
   # export DOCKER_BUILDKIT=0  # Use legacy builder
-  docker build -t bev-train:latest .
+  docker build -t bev-train:cu113 .
   ```
 
 ## Export image
@@ -39,8 +39,8 @@ For the original fully manual, step-by-step dev notes, see: [`dev_note.md`](dev_
 - From host:
 
   ```bash
-  docker save bev-train:latest -o bev_train_2026.tar
-  sha256sum bev_train_2026.tar > bev_train_2026.tar.sha256
+  docker save bev-train:cu113 -o bev_train_cu113_2026.tar
+  sha256sum bev_train_cu113_2026.tar > bev_train_cu113_2026.tar.sha256
   ```
 
 ## Run container (CLI)
@@ -49,18 +49,18 @@ For the original fully manual, step-by-step dev notes, see: [`dev_note.md`](dev_
 
   ```bash
   docker run --gpus all -it \
-      --name bev-train \
+      --name bev-train-cu113 \
       --shm-size=32g \
       -v /home/$USER/docker/bev_train:/workspace \
-      bev-train:latest \
+      bev-train:cu113 \
       bash
   ```
 
 - Re-enter later:
 
   ```bash
-  docker restart bev-train
-  docker exec -it bev-train bash
+  docker restart bev-train-cu113
+  docker exec -it bev-train-cu113 bash
   ```
 
 ## Run container (Compose [`docker-compose.yml`](docker-compose.yml))
@@ -74,7 +74,7 @@ For the original fully manual, step-by-step dev notes, see: [`dev_note.md`](dev_
 - Enter the running container:
 
   ```bash
-  docker exec -it bev-train bash
+  docker exec -it bev-train-cu113 bash
   ```
 
 - Stop and remove:
@@ -91,8 +91,8 @@ For the original fully manual, step-by-step dev notes, see: [`dev_note.md`](dev_
 - Enter the container from host:
 
   ```bash
-  docker restart bev-train
-  docker exec -it bev-train bash
+  docker restart bev-train-cu113
+  docker exec -it bev-train-cu113 bash
   ```
 
 - If you didn't follow [Prerequisites](#prerequisites) or due to some unknown reasons, MMCV might need a rebuild to get a proper CUDA support:
@@ -118,6 +118,7 @@ For the original fully manual, step-by-step dev notes, see: [`dev_note.md`](dev_
   cd /workspace
   git clone https://github.com/rathaumons/bevfusionx.git
   cd bevfusionx
+  git checkout cu113  # IMPORTANT !!!
   python setup.py develop
   ```
 
