@@ -8,6 +8,8 @@ This guide walks you through installing the project directly on your machine. If
 
 👉 For [CUDA 12.6](https://github.com/rathaumons/bevfusionx/blob/cu126/INSTALLATION.md) | [Docker 🐳](https://github.com/rathaumons/bevfusionx/tree/cu126/docker)
 
+👉 For [CUDA 12.8](https://github.com/rathaumons/bevfusionx/blob/cu128/INSTALLATION.md) | [Docker 🐳](https://github.com/rathaumons/bevfusionx/tree/cu128/docker)
+
 ## Prepare prerequisites
 
 - Only Linux
