@@ -1,4 +1,4 @@
-FROM nvidia/cuda:12.6.2-cudnn-devel-ubuntu20.04
+FROM nvidia/cuda:12.8.0-cudnn-devel-ubuntu20.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 SHELL ["/bin/bash", "-lc"]
@@ -54,7 +54,7 @@ RUN source /root/miniconda3/bin/activate bevfusion && \
     pip install numpy==1.26.4 opencv-python==4.11.0.86
 
 RUN source /root/miniconda3/bin/activate bevfusion && \
-    pip install torch==2.10.0 torchvision==0.25.0 --index-url https://download.pytorch.org/whl/cu126
+    pip install torch==2.10.0 torchvision==0.25.0 --index-url https://download.pytorch.org/whl/cu128
 
 # ------------------------------------------------------------
 # Global ENV
@@ -91,7 +91,7 @@ RUN source /root/miniconda3/bin/activate bevfusion && \
 # Force CUDA
 # For compute capability, see: 
 # https://developer.nvidia.com/cuda/gpus
-ARG TORCH_CUDA_ARCH_LIST="8.6;8.9"
+ARG TORCH_CUDA_ARCH_LIST="8.6;8.9;12.0"
 ENV FORCE_CUDA="1"
 ENV TORCH_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST}"
 
@@ -120,10 +120,19 @@ RUN source /root/miniconda3/bin/activate bevfusion && \
         mpi4py==4.1.1 \
         future==1.0.0 \
         tensorboard==2.20.0 \
-        cumm-cu126==0.7.11 \
-        spconv-cu126==2.3.8 \
         numpy==1.26.4 \
         opencv-python==4.11.0.86
+
+ENV CUMM_CUDA_VERSION="12.8"
+ENV CUMM_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST}"
+ENV CUMM_DISABLE_JIT="1"
+ENV SPCONV_DISABLE_JIT="1"
+
+RUN source /root/miniconda3/bin/activate bevfusion && \
+    pip install git+https://github.com/FindDefinition/cumm.git@v0.8.2
+
+RUN source /root/miniconda3/bin/activate bevfusion && \
+    pip install git+https://github.com/traveller59/spconv.git@v2.3.8 --no-deps 
 
 RUN source /root/miniconda3/bin/activate bevfusion && \
     pip install --no-build-isolation flash-attn==1.0.9
