@@ -12,7 +12,7 @@ This guide walks you through installing the project directly on your machine. If
 
 - Only Linux
 - Only gcc/g++ 9; otherwise, errors will occur later in some builds.
-- Only [CUDA 12.6](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/) & [cuDNN 9.0](https://docs.nvidia.com/deeplearning/cudnn/latest/installation/linux.html)
+- Only [CUDA 12.6](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/) & [cuDNN 9.x](https://docs.nvidia.com/deeplearning/cudnn/latest/installation/linux.html)
 - Only Python 3.11 -> `conda create --name bevfusion python=3.11`
 
 ## Install requirements and build
@@ -114,7 +114,7 @@ This guide walks you through installing the project directly on your machine. If
 
   </details>
 
-- Clone the repo and install Python Packages:
+- Clone the repo and install Python packages:
 
   ```bash
   cd ~  # or choose your preferred location
