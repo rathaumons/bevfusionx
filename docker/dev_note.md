@@ -253,6 +253,7 @@ This file contains the original, fully-tested manual steps used to build the BEV
 
     ```bash
     cd mmcv
+    export TORCH_CUDA_ARCH_LIST="7.5;8.6"
     MAKEFLAGS="-j$(nproc)" MMCV_WITH_OPS=1 pip install -e . --no-build-isolation -v
     ```
 
