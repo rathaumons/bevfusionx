@@ -122,8 +122,8 @@ This guide walks you through installing the project directly on your machine. If
   ```bash
   cd ~  # or choose your preferred location
   git clone https://github.com/rathaumons/bevfusionx.git
-  git checkout cu113  # IMPORTANT !!!
   cd bevfusion
+  git checkout cu113  # IMPORTANT !!!
   pip install -r requirements.txt
   ```
 
