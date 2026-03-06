@@ -102,6 +102,7 @@ This guide walks you through installing the project directly on your machine. If
 
     ```bash
     cd mmcv
+    # export TORCH_CUDA_ARCH_LIST="8.6;8.9"  # optional for direct install
     MAKEFLAGS="-j$(nproc)" MMCV_WITH_OPS=1 pip install -e . --no-build-isolation -v
     ```
 
