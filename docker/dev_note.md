@@ -1,4 +1,4 @@
-# DEV NOTE 20260305 (CUDA 12.6)
+# DEV NOTE 20260306 (CUDA 12.6)
 
 This file contains the original, fully-tested manual steps used to build the BEVFusion training environment interactively inside a container.
 
