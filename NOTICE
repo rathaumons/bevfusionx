@@ -5,13 +5,9 @@ To see a full list of added and modified files, run in the git repository:
 
     (START)
     M       .gitignore
-    A       INSTALLATION.md
     M       LICENSE
     A       NOTICE
-    A       PREPARATION.md
     M       README.md
-    A       RUN.md
-    A       VISUALIZATION.md
     M       configs/nuscenes/default.yaml
     M       configs/nuscenes/det/centerhead/default.yaml
     A       configs/nuscenes/det/centerhead/lssfpn/camera+radar/default.yaml
@@ -24,11 +20,32 @@ To see a full list of added and modified files, run in the git repository:
     M       configs/nuscenes/det/centerhead/lssfpn/default.yaml
     M       configs/nuscenes/det/default.yaml
     A       data/nuscenes/.gitignore
-    A       docker/20260304/Dockerfile
-    M       docker/Dockerfile
-    A       docker/README.md
-    A       docker/dev_note.md
-    A       docker/docker-compose.yml
+    D       docker/Dockerfile
+    A       extra_reqs.txt
+    A       installation/CU113.md
+    A       installation/CU121.md
+    A       installation/CU126.md
+    A       installation/CU128.md
+    A       installation/README.md
+    A       installation/docker/Dockerfile.cu113
+    A       installation/docker/Dockerfile.cu121
+    A       installation/docker/Dockerfile.cu126
+    A       installation/docker/Dockerfile.cu128
+    A       installation/docker/README.md
+    A       installation/docker/dev_note_cu113.md
+    A       installation/docker/dev_note_cu121.md
+    A       installation/docker/dev_note_cu126.md
+    A       installation/docker/dev_note_cu128.md
+    A       installation/docker/docker-compose-cu113.yml
+    A       installation/docker/docker-compose-cu121.yml
+    A       installation/docker/docker-compose-cu126.yml
+    A       installation/docker/docker-compose-cu128.yml
+    A       installation/docker/pinned/Dockerfile.cu113
+    A       installation/docker/pinned/Dockerfile.cu121
+    A       installation/docker/pinned/Dockerfile.cu126
+    A       installation/docker/pinned/Dockerfile.cu128
+    A       installation/docker/prerequisites.md
+    M       mmdet3d/__init__.py
     M       mmdet3d/core/points/__init__.py
     A       mmdet3d/core/points/radar_points.py
     M       mmdet3d/core/utils/visualize.py
@@ -63,8 +80,11 @@ To see a full list of added and modified files, run in the git repository:
     M       mmdet3d/ops/voxel/src/scatter_points_cuda.cu
     M       mmdet3d/ops/voxel/src/voxelization.h
     A       pretrained/.gitignore
-    A       requirements.txt
     M       setup.py
+    A       tools/PREPARATION.md
+    A       tools/README.md
+    A       tools/RUN.md
+    A       tools/VISUALIZATION.md
     M       tools/benchmark.py
     M       tools/data_converter/nuscenes_converter.py
     M       tools/download_pretrained.sh

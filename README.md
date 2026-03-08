@@ -8,17 +8,24 @@ All sensor modalities (**Camera ✓ LiDAR ✓ RADAR ✓**) are supported and hav
 
 ## 🚀 Quick Start
 
-- **Installation:**
-  - [CUDA 12.8](https://github.com/rathaumons/bevfusionx/blob/cu128/INSTALLATION.md) · [Docker 🐳](https://github.com/rathaumons/bevfusionx/tree/cu128/docker)
-  - [CUDA 12.6](https://github.com/rathaumons/bevfusionx/blob/cu126/INSTALLATION.md) · [Docker 🐳](https://github.com/rathaumons/bevfusionx/tree/cu126/docker)
-  - [CUDA 12.1](https://github.com/rathaumons/bevfusionx/blob/cu121/INSTALLATION.md) · [Docker 🐳](https://github.com/rathaumons/bevfusionx/tree/cu121/docker)
-  - [CUDA 11.3](https://github.com/rathaumons/bevfusionx/blob/cu113/INSTALLATION.md) · [Docker 🐳](https://github.com/rathaumons/bevfusionx/tree/cu113/docker)
-- **Data & Model Preparation:**
-  - [PREPARATION.md](PREPARATION.md)
-- **Evaluation & Training:**
-  - [RUN.md](RUN.md)
-- **Visualization:**
-  - [VISUALIZATION.md](VISUALIZATION.md)
+### Installation:
+
+- [CUDA 12.8](installation/CU128.md) · [Docker 🐳](installation/docker/)
+- [CUDA 12.6](installation/CU126.md) · [Docker 🐳](installation/docker/)
+- [CUDA 12.1](installation/CU121.md) · [Docker 🐳](installation/docker/)
+- [CUDA 11.3](installation/CU113.md) · [Docker 🐳](installation/docker/)
+
+### Data and Model Preparation:
+
+- [PREPARATION.md](tools/PREPARATION.md)
+
+### Model Evaluation and Training:
+
+- [RUN.md](tools/RUN.md)
+
+### Visualization:
+
+- [VISUALIZATION.md](tools/VISUALIZATION.md)
 
 ## 📝 License
 

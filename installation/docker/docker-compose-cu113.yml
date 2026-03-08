@@ -1,0 +1,17 @@
+services:
+  bev-train:
+    container_name: bev-train-cu113
+    build:
+      context: .
+      dockerfile: Dockerfile.cu113
+    image: bev-train:cu113
+    working_dir: /workspace
+    volumes:
+      - /home/${USER}/docker/bev_train_cu113:/workspace
+    stdin_open: true
+    tty: true
+    command: bash
+    # GPU support (Compose v2 with NVIDIA Container Toolkit)
+    gpus: all
+    # Shared memory
+    shm_size: "32gb"

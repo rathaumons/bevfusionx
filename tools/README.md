@@ -1,0 +1,3 @@
+- 👉 For data and model preparation, see [PREPARATION.md](tools/PREPARATION.md).
+- 👉 For mModel evaluation and training, see [RUN.md](tools/RUN.md).
+- 👉 For visualization, see [VISUALIZATION.md](tools/VISUALIZATION.md).

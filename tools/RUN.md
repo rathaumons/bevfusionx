@@ -8,7 +8,7 @@ Default command for evaluating a model:
 torchpack dist-run -np [number of GPU] python tools/test.py [config file path] pretrained/[checkpoint name].pth --eval [evaluation type]
 ```
 
-For more details, see [test.py](https://github.com/rathaumons/bevfusionx/blob/cu128/tools/test.py).
+For more details, see [test.py](https://github.com/rathaumons/bevfusionx/blob/main/tools/test.py).
 
 - Evaluate with 1 GPU:
 
@@ -66,7 +66,7 @@ Default command for training a model:
 torchpack dist-run -np [number of GPU] python tools/train.py [config file path] [extra options]
 ```
 
-For more details, see [train.py](https://github.com/rathaumons/bevfusionx/blob/cu128/tools/train.py).
+For more details, see [train.py](https://github.com/rathaumons/bevfusionx/blob/main/tools/train.py).
 
 - Train with 1 GPU:
 

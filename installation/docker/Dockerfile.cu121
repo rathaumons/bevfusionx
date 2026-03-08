@@ -1,4 +1,4 @@
-FROM nvidia/cuda:12.8.0-cudnn-devel-ubuntu20.04
+FROM nvidia/cuda:12.1.0-cudnn8-devel-ubuntu20.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 SHELL ["/bin/bash", "-lc"]
@@ -51,10 +51,10 @@ RUN dos2unix /root/.bashrc
 # ------------------------------------------------------------
 RUN source /root/miniconda3/bin/activate bevfusion && \
     pip install -U pip wheel "setuptools<82" && \
-    pip install numpy==1.26.4 opencv-python==4.11.0.86
+    pip install numpy==1.26.4 "opencv-python<4.12"
 
 RUN source /root/miniconda3/bin/activate bevfusion && \
-    pip install torch==2.10.0 torchvision==0.25.0 --index-url https://download.pytorch.org/whl/cu128
+    pip install torch==2.2.2 torchvision==0.17.2 --index-url https://download.pytorch.org/whl/cu121
 
 # ------------------------------------------------------------
 # Global ENV
@@ -91,7 +91,7 @@ RUN source /root/miniconda3/bin/activate bevfusion && \
 # Force CUDA
 # For compute capability, see: 
 # https://developer.nvidia.com/cuda/gpus
-ARG TORCH_CUDA_ARCH_LIST="8.6;8.9;12.0"
+ARG TORCH_CUDA_ARCH_LIST="7.5;8.6;8.9"
 ENV FORCE_CUDA="1"
 ENV TORCH_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST}"
 
@@ -109,27 +109,27 @@ RUN source /root/miniconda3/bin/activate bevfusion && \
 # ------------------------------------------------------------
 RUN source /root/miniconda3/bin/activate bevfusion && \
     pip install \
-        psutil==7.2.2 \
-        Pillow==9.5.0 \
-        tqdm==4.67.3 \
+        psutil \
+        "Pillow<10" \
+        tqdm \
         git+https://github.com/rathaumons/torchpack.git \
-        mmdet==2.28.2 \
+        "mmdet<3" \
         nuscenes-devkit==1.1.11 \
-        numba==0.64.0 \
+        numba \
         yapf==0.40.1 \
-        mpi4py==4.1.1 \
-        future==1.0.0 \
-        tensorboard==2.20.0 \
+        mpi4py \
+        future \
+        tensorboard \
         numpy==1.26.4 \
-        opencv-python==4.11.0.86
+        "opencv-python<4.12"
 
-ENV CUMM_CUDA_VERSION="12.8"
+ENV CUMM_CUDA_VERSION="12.1"
 ENV CUMM_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST}"
 ENV CUMM_DISABLE_JIT="1"
 ENV SPCONV_DISABLE_JIT="1"
 
 RUN source /root/miniconda3/bin/activate bevfusion && \
-    pip install git+https://github.com/FindDefinition/cumm.git@v0.8.2
+    pip install git+https://github.com/FindDefinition/cumm.git@v0.7.13
 
 RUN source /root/miniconda3/bin/activate bevfusion && \
     pip install git+https://github.com/traveller59/spconv.git@v2.3.8 --no-deps 

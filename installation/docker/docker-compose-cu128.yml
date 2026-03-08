@@ -3,7 +3,7 @@ services:
     container_name: bev-train-cu128
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.cu128
     image: bev-train:cu128
     working_dir: /workspace
     volumes:
