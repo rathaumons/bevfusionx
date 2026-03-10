@@ -127,12 +127,13 @@ ENV CUMM_CUDA_VERSION="12.6"
 ENV CUMM_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST}"
 ENV CUMM_DISABLE_JIT="1"
 ENV SPCONV_DISABLE_JIT="1"
+ENV CUMM_NVRTC_STD="c++17"
 
 RUN source /root/miniconda3/bin/activate bevfusion && \
-    pip install git+https://github.com/FindDefinition/cumm.git@v0.7.13
+    pip install git+https://github.com/rathaROG/cumm-gpu.git
 
 RUN source /root/miniconda3/bin/activate bevfusion && \
-    pip install git+https://github.com/traveller59/spconv.git@v2.3.8 --no-deps 
+    pip install git+https://github.com/rathaROG/spconv-gpu.git
 
 RUN source /root/miniconda3/bin/activate bevfusion && \
     pip install --no-build-isolation flash-attn==1.0.9

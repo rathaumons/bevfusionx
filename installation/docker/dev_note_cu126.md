@@ -292,8 +292,9 @@ This file contains the original, fully-tested manual steps used to build the BEV
   export CUMM_CUDA_ARCH_LIST="7.5;8.6;8.9"
   export CUMM_DISABLE_JIT="1"
   export SPCONV_DISABLE_JIT="1"
-  pip install git+https://github.com/FindDefinition/cumm.git@v0.7.13
-  pip install git+https://github.com/traveller59/spconv.git@v2.3.8 --no-deps 
+  export CUMM_NVRTC_STD="c++17"
+  pip install git+https://github.com/rathaROG/cumm-gpu.git
+  pip install git+https://github.com/rathaROG/spconv-gpu.git
   ```
 
 - Install `flash-attn==1.0.9` and `setuptools==59.5.0`:
