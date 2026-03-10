@@ -1,4 +1,4 @@
-# DEV NOTE 20260306 (CUDA 12.6)
+# DEV NOTE 20260310 (CUDA 12.6)
 
 This file contains the original, fully-tested manual steps used to build the BEVFusion training environment interactively inside a container.
 
@@ -147,7 +147,7 @@ This file contains the original, fully-tested manual steps used to build the BEV
     conda update --all
     ```
 
-  - Create a Python 3.9 environment call `bevfusion`:
+  - Create a Python 3.11 environment call `bevfusion`:
 
     ```bash
     conda deactivate
