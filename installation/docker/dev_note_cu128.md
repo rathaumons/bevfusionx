@@ -1,9 +1,9 @@
-# DEV NOTE 20260315 (CUDA 12.8)
+# DEV NOTE 20260318 (CUDA 12.8)
 
 This file contains the original, fully-tested manual steps used to build the BEVFusion training environment interactively inside a container.
 
 > Recommended usage now:
-> - Use [`Dockerfile`](Dockerfile) + [`docker-compose.yml`](docker-compose.yml) for reproducible builds (see [`README.md`](README.md))
+> - Use [`Dockerfile.cu128`](Dockerfile.cu128) + [`docker-compose-cu128.yml`](docker-compose-cu128.yml) for reproducible builds (see [`README.md`](README.md))
 > - Keep this file as a reference / troubleshooting log
 
 ## Prepare prerequisites
