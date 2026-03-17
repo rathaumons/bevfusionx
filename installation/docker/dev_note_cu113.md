@@ -1,9 +1,9 @@
-# DEV NOTE 20260310 (CUDA 11.3)
+# DEV NOTE 20260318 (CUDA 11.3)
 
 This file contains the original, fully-tested manual steps used to build the BEVFusion training environment interactively inside a container.
 
 > Recommended usage now:
-> - Use [`Dockerfile`](Dockerfile) + [`docker-compose.yml`](docker-compose.yml) for reproducible builds (see [`README.md`](README.md))
+> - Use [`Dockerfile.cu113`](Dockerfile.cu113) + [`docker-compose-cu113.yml`](docker-compose-cu113.yml) for reproducible builds (see [`README.md`](README.md))
 > - Keep this file as a reference / troubleshooting log
 
 ## Prepare prerequisites
