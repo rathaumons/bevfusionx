@@ -1,5 +1,6 @@
 # Installation 🚀
 
+- [CUDA 13.0](CU130.md) · [Docker 🐳](docker) · 🆕
 - [CUDA 12.8](CU128.md) · [Docker 🐳](docker)
 - [CUDA 12.6](CU126.md) · [Docker 🐳](docker)
 - [CUDA 12.1](CU121.md) · [Docker 🐳](docker)

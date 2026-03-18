@@ -10,6 +10,7 @@ All sensor modalities (**Camera ✓ LiDAR ✓ RADAR ✓**) are supported and hav
 
 ### Installation:
 
+- [CUDA 13.0](installation/CU130.md) · [Docker 🐳](installation/docker/) · 🆕
 - [CUDA 12.8](installation/CU128.md) · [Docker 🐳](installation/docker/)
 - [CUDA 12.6](installation/CU126.md) · [Docker 🐳](installation/docker/)
 - [CUDA 12.1](installation/CU121.md) · [Docker 🐳](installation/docker/)

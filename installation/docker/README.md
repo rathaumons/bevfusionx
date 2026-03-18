@@ -4,6 +4,7 @@ This guide describes how to build and run the BEVFusion training environment usi
 
 For the original fully manual, step-by-step dev notes for different CUDA versions, see: 
 
+- [`dev_note_cu130.md`](dev_note_cu130.md)
 - [`dev_note_cu128.md`](dev_note_cu128.md)
 - [`dev_note_cu126.md`](dev_note_cu126.md)
 - [`dev_note_cu121.md`](dev_note_cu121.md)
@@ -21,8 +22,8 @@ From the [current directory](.) containing `Dockerfile.cuxxx` files on host:
 # Use legacy builder (Not recommend)
 # export DOCKER_BUILDKIT=0
 
-# For CUDA 12.8
-docker build -f Dockerfile.cu128 -t bev-train:cu128 .
+# For CUDA 13.0
+docker build -f Dockerfile.cu130 -t bev-train:cu130 .
 ```
 
 (Optional) Export docker image:
@@ -30,9 +31,9 @@ docker build -f Dockerfile.cu128 -t bev-train:cu128 .
 <details><summary>Show more details</summary>
 
 ```bash
-# For CUDA 12.8
-docker save bev-train:cu128 -o bev_train_cu128_2026.tar
-sha256sum bev_train_cu128_2026.tar > bev_train_cu128_2026.tar.sha256
+# For CUDA 13.0
+docker save bev-train:cu130 -o bev_train_cu130_2026.tar
+sha256sum bev_train_cu130_2026.tar > bev_train_cu130_2026.tar.sha256
 ```
 
 </details>
@@ -41,35 +42,35 @@ sha256sum bev_train_cu128_2026.tar > bev_train_cu128_2026.tar.sha256
 
 There are 2 option to manage container:
 
-- Option 1: [CLI mode](https://docs.docker.com/reference/cli/docker/); for example, container with CUDA 12.8:
+- Option 1: [CLI mode](https://docs.docker.com/reference/cli/docker/); for example, container with CUDA 13.0:
 
   - Run container with all GPUs and a mount `-v host:container`:
 
     ```bash
     docker run --gpus all -it \
-        --name bev-train-cu128 \
+        --name bev-train-cu130 \
         --shm-size=32g \
-        -v /home/$USER/docker/bev_train_cu128:/workspace \
-        bev-train:cu128 \
+        -v /home/$USER/docker/bev_train_cu130:/workspace \
+        bev-train:cu130 \
         bash
     ```
 
   - Re-enter the running container:
 
     ```bash
-    docker exec -it bev-train-cu128 bash
+    docker exec -it bev-train-cu130 bash
     ```
 
   - Stop the running container:
 
     ```bash
-    docker stop bev-train-cu128
+    docker stop bev-train-cu130
     ```
 
   - Restart/start the container:
 
     ```bash
-    docker restart bev-train-cu128
+    docker restart bev-train-cu130
     ```
 
 
@@ -78,19 +79,19 @@ There are 2 option to manage container:
   - Build + start (background):
 
     ```bash
-    docker compose -f docker-compose-cu128.yml up -d --build
+    docker compose -f docker-compose-cu130.yml up -d --build
     ```
 
   - Stop the running container:
 
     ```bash
-    docker compose -f docker-compose-cu128.yml stop
+    docker compose -f docker-compose-cu130.yml stop
     ```
 
   - Stop and remove the container:
 
     ```bash
-    docker compose -f docker-compose-cu128.yml down
+    docker compose -f docker-compose-cu130.yml down
     ```
 
 ### Note: 
@@ -103,8 +104,8 @@ There are 2 option to manage container:
 Enter the container from host:
 
 ```bash
-docker restart bev-train-cu128
-docker exec -it bev-train-cu128 bash
+docker restart bev-train-cu130
+docker exec -it bev-train-cu130 bash
 ```
 
 If you didn't follow [Prerequisites](#prerequisites) or due to some unknown reasons, MMCV might need a rebuild to get a proper CUDA support:
