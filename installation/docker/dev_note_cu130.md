@@ -294,7 +294,7 @@ This file contains the original, fully-tested manual steps used to build the BEV
       "opencv-python<4.12"
   ```
 
-- Install custom [`cumm`](https://github.com/FindDefinition/cumm.git) and [`spconv`](https://github.com/traveller59/spconv.git) with CUDA 13.0:
+- Install custom [`cumm`](https://github.com/rathaROG/cumm-gpu) and [`spconv`](https://github.com/rathaROG/spconv-gpu) with CUDA 13.0:
 
   ```bash
   pip install cumm-cu130 spconv-cu130 --extra-index-url https://ratharog.github.io/cumm-spconv/

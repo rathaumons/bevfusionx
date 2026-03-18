@@ -285,16 +285,16 @@ This file contains the original, fully-tested manual steps used to build the BEV
       "opencv-python<4.12"
   ```
 
-- Install custom [`cumm`](https://github.com/FindDefinition/cumm.git) and [`spconv`](https://github.com/traveller59/spconv.git) with CUDA 12.8:
+- Install custom [`cumm`](https://github.com/rathaROG/cumm-gpu) and [`spconv`](https://github.com/rathaROG/spconv-gpu) with CUDA 12.1:
 
   ```bash
   export CUMM_CUDA_VERSION="12.1"
-  export CUMM_CUDA_ARCH_LIST="7.5;8.6;8.9"
+  export CUMM_CUDA_ARCH_LIST="all"
   export CUMM_DISABLE_JIT="1"
   export SPCONV_DISABLE_JIT="1"
   export CUMM_NVRTC_STD="c++14"
   pip install git+https://github.com/rathaROG/cumm-gpu.git@v0.7.13
-  pip install git+https://github.com/rathaROG/spconv-gpu.git
+  pip install git+https://github.com/rathaROG/spconv-gpu.git@v2.3.11 --no-deps --no-build-isolation
   ```
 
 - Install `flash-attn==1.0.9` and `setuptools==59.5.0`:
