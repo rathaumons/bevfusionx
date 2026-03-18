@@ -131,7 +131,7 @@ This file contains the original, fully-tested manual steps used to build the BEV
 
     ```bash
     apt-get update
-    apt-get install -y wget git libgl1 libglib2.0-0
+    apt-get install -y gcc-9 g++-9 wget git libgl1 libglib2.0-0
     ```
 
   - Install [miniconda](https://www.anaconda.com/docs/getting-started/miniconda/install#linux-2):
@@ -152,6 +152,15 @@ This file contains the original, fully-tested manual steps used to build the BEV
     ```bash
     conda deactivate
     conda create -n bevfusion python=3.11 -y
+    ```
+
+  - Set GCC/G++ 9 as default:
+
+    ```bash
+    update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 100
+    update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9 100
+    update-alternatives --set gcc /usr/bin/gcc-9
+    update-alternatives --set g++ /usr/bin/g++-9
     ```
 
   - Add to `.bashrc` using [VS Code](https://code.visualstudio.com/download) from host:
