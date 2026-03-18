@@ -1,0 +1,20 @@
+# This CITATION.cff file was generated with cffinit.
+
+cff-version: 1.2.0
+title: BEVFusionx
+message: >-
+  If you use this software or part(s) of it, please cite it
+  using the metadata from this file.
+type: software
+authors:
+  - given-names: Ratha
+    family-names: SIV
+    affiliation: UMONS-Numediart
+    orcid: 'https://orcid.org/0009-0003-9554-1036'
+identifiers:
+  - type: url
+    value: 'https://github.com/rathaumons/bevfusionx.git'
+    description: Official GitHub repository
+repository-code: 'https://github.com/rathaumons/bevfusionx'
+abstract: BEVFusionx builds on top of BEVFusion db75150.
+license: Apache-2.0
