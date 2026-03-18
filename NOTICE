@@ -5,6 +5,7 @@ To see a full list of added and modified files, run in the git repository:
 
     (START)
     M       .gitignore
+    A       CITATION.cff
     M       LICENSE
     A       NOTICE
     M       README.md
