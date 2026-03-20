@@ -28,56 +28,6 @@ def make_cuda_ext(
     define_macros = []
     extra_compile_args = {"cxx": [] + extra_args}
 
-    # if (torch.cuda.is_available() and torch.version.cuda is not None) or os.getenv("FORCE_CUDA", "0") == "1":
-    #     define_macros += [("WITH_CUDA", None)]
-    #     extension = CUDAExtension
-    #     cuda_version = float(torch.version.cuda)
-    #     if cuda_version >= 12.8:
-    #         print(f"PyTorch deteted CUDA {cuda_version}, enabling compute capabilities sm_86, sm_89, and sm_120.")
-    #         # See more details here: https://github.com/rathaROG/NVIDIA-CUDA-COMPUTE-CAPABILITY
-    #         extra_compile_args["nvcc"] = extra_args + [
-    #             "-D__CUDA_NO_HALF_OPERATORS__",
-    #             "-D__CUDA_NO_HALF_CONVERSIONS__",
-    #             "-D__CUDA_NO_HALF2_OPERATORS__",
-    #             # "-gencode=arch=compute_75,code=sm_75",
-    #             # "-gencode=arch=compute_80,code=sm_80",    # Data Center GPUs (A30, A100)
-    #             "-gencode=arch=compute_86,code=sm_86",
-    #             "-gencode=arch=compute_89,code=sm_89",
-    #             # "-gencode=arch=compute_90,code=sm_90",    # Data Center GPUs (H100, H200, GH200)
-    #             # "-gencode=arch=compute_100,code=sm_100",  # Data Center GPUs (B200, GB200)
-    #             # "-gencode=arch=compute_103,code=sm_103",  # Data Center GPUs (B300, GB300)
-    #             "-gencode=arch=compute_120,code=sm_120",
-    #         ]
-    #     elif cuda_version < 12.8 and cuda_version >= 11.8:
-    #         print(f"PyTorch deteted CUDA {cuda_version}, enabling compute capabilities sm_75, sm_86, and sm_89.")
-    #         # See more details here: https://github.com/rathaROG/NVIDIA-CUDA-COMPUTE-CAPABILITY
-    #         extra_compile_args["nvcc"] = extra_args + [
-    #             "-D__CUDA_NO_HALF_OPERATORS__",
-    #             "-D__CUDA_NO_HALF_CONVERSIONS__",
-    #             "-D__CUDA_NO_HALF2_OPERATORS__",
-    #             "-gencode=arch=compute_75,code=sm_75",
-    #             # "-gencode=arch=compute_80,code=sm_80",    # Data Center GPUs (A30, A100)
-    #             "-gencode=arch=compute_86,code=sm_86",
-    #             "-gencode=arch=compute_89,code=sm_89",
-    #             # "-gencode=arch=compute_90,code=sm_90",    # Data Center GPUs (H100, H200, GH200)
-    #         ]
-    #     elif cuda_version < 11.8 and cuda_version >= 11.1:
-    #         print(f"PyTorch deteted CUDA {cuda_version}, enabling compute capabilities sm_75 and sm_86.")
-    #         # See more details here: https://github.com/rathaROG/NVIDIA-CUDA-COMPUTE-CAPABILITY
-    #         extra_compile_args["nvcc"] = extra_args + [
-    #             "-D__CUDA_NO_HALF_OPERATORS__",
-    #             "-D__CUDA_NO_HALF_CONVERSIONS__",
-    #             "-D__CUDA_NO_HALF2_OPERATORS__",
-    #             "-gencode=arch=compute_75,code=sm_75",
-    #             # "-gencode=arch=compute_80,code=sm_80",    # Data Center GPUs (A30, A100)
-    #             "-gencode=arch=compute_86,code=sm_86",
-    #         ]
-    #     else:
-    #         print(f"PyTorch deteted CUDA {cuda_version} which is not supported.")
-    #         # See more details here: https://github.com/rathaROG/NVIDIA-CUDA-COMPUTE-CAPABILITY
-    #         exit(1)
-    #     sources += sources_cuda
-
     if (torch.cuda.is_available() and torch.version.cuda is not None) or os.getenv("FORCE_CUDA", "0") == "1":
         define_macros += [("WITH_CUDA", None)]
         extension = CUDAExtension
@@ -116,6 +66,10 @@ def make_cuda_ext(
         extra_compile_args=extra_compile_args,
     )
 
+def read_requirements():
+    with open("extra_reqs.txt") as req_txt:
+        return [line for line in req_txt.read().splitlines()]
+
 
 if __name__ == "__main__":
     setup(
@@ -130,6 +84,7 @@ if __name__ == "__main__":
         },
         long_description=open("README.md", "r", encoding="utf-8").read(),
         long_description_content_type="text/markdown",
+        install_requires=read_requirements(),
         packages=find_packages(),
         include_package_data=True,
         package_data={"mmdet3d.ops": ["*/*.so"]},
