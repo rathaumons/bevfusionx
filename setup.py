@@ -36,7 +36,7 @@ def make_cuda_ext(
             cuda_ver=cuda_version,
             gpu_type="cons+jets",
             min_sm=60 if float(cuda_version) < 12.8 else 75,
-            return_mode="arch_list",
+            return_mode="sm_list",
         )
         gencode_flags = nvidia_arch.make_gencode_flags(arches)
         extra_compile_args["nvcc"] = extra_args + [
