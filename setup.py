@@ -66,10 +66,6 @@ def make_cuda_ext(
         extra_compile_args=extra_compile_args,
     )
 
-def read_requirements():
-    with open("extra_reqs.txt") as req_txt:
-        return [line for line in req_txt.read().splitlines()]
-
 
 if __name__ == "__main__":
     setup(
@@ -84,7 +80,6 @@ if __name__ == "__main__":
         },
         long_description=open("README.md", "r", encoding="utf-8").read(),
         long_description_content_type="text/markdown",
-        install_requires=read_requirements(),
         packages=find_packages(),
         include_package_data=True,
         package_data={"mmdet3d.ops": ["*/*.so"]},
