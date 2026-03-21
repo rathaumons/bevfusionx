@@ -5,7 +5,7 @@ git+https://github.com/rathaumons/torchpack.git
 mmdet<3
 nuscenes-devkit==1.1.11
 numba
-nvidia-arch
+nvidia-arch>=1.0.0
 yapf==0.40.1
 mpi4py
 future
