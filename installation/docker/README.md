@@ -1,8 +1,8 @@
 # Docker 🐳
 
-You can easily pull the [**official images from Docker Hub 🐳**](https://hub.docker.com/r/ratharog/bevfusionx) and build BEVFusionx:
+You can easily pull the [**official images from Docker Hub 🐳**](https://hub.docker.com/r/ratharog/bevfusionx) and build BEVFusionx as follows:
 
-- Step 1: On host
+- **Step 1: On host**
 
   ```bash
   # Pull from Docker Hub
@@ -17,14 +17,16 @@ You can easily pull the [**official images from Docker Hub 🐳**](https://hub.d
       bash
   ```
 
-- Step 2: Inside the container
+- **Step 2: Inside the container**
 
   ```bash
   cd /workspace
-  git clone https://github.com/rathaumons/bevfusionx.git -b v1.0.0-bevfusionx
+  git clone -b v1.0.0-bevfusionx https://github.com/rathaumons/bevfusionx.git
   cd bevfusionx
   python setup.py develop
   ```
+
+- **Step 3**: Check the main [README.md](https://github.com/rathaumons/bevfusionx#readme) for information on preparing datasets, running evaluations, training models, and visualizing results.
 
 Or, if you want to build and run BEVFusionx yourself, use the provided Dockerfiles and Docker Compose files for easy building and management (See details [here](dockerfile.md)):
 
@@ -40,5 +42,3 @@ Or, if you want fully manual, step-by-step dev notes for different CUDA versions
 - [`dev_note_cu128.md`](dev_note_cu128.md)
 - [`dev_note_cu126.md`](dev_note_cu126.md)
 - [`dev_note_cu121.md`](dev_note_cu121.md)
-
-
