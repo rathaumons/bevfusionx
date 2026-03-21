@@ -10,11 +10,11 @@ All sensor modalities (**Camera ✓ LiDAR ✓ RADAR ✓**) are supported and hav
 
 ### Installation:
 
-- [CUDA 13.0](installation/CU130.md) · [Docker 🐳](installation/docker#readme) · 🆕
-- [CUDA 12.8](installation/CU128.md) · [Docker 🐳](installation/docker#readme)
-- [CUDA 12.6](installation/CU126.md) · [Docker 🐳](installation/docker#readme)
-- [CUDA 12.1](installation/CU121.md) · [Docker 🐳](installation/docker#readme)
-- [CUDA 11.3](installation/CU113.md) · [Docker 🐳](installation/docker#readme)
+- [CUDA 13.0](installation/CU130.md) · [Docker 🐳](https://github.com/rathaumons/bevfusionx/tree/main/installation/docker#readme) · 🆕
+- [CUDA 12.8](installation/CU128.md) · [Docker 🐳](https://github.com/rathaumons/bevfusionx/tree/main/installation/docker#readme)
+- [CUDA 12.6](installation/CU126.md) · [Docker 🐳](https://github.com/rathaumons/bevfusionx/tree/main/installation/docker#readme)
+- [CUDA 12.1](installation/CU121.md) · [Docker 🐳](https://github.com/rathaumons/bevfusionx/tree/main/installation/docker#readme)
+- [CUDA 11.3](installation/CU113.md) · [Docker 🐳](https://github.com/rathaumons/bevfusionx/tree/main/installation/docker#readme)
 
 ### Data and Model Preparation:
 
