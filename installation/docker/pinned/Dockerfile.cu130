@@ -124,7 +124,7 @@ RUN source /root/miniconda3/bin/activate bevfusion && \
         mmdet==2.28.2 \
         nuscenes-devkit==1.1.11 \
         numba==0.64.0 \
-        nvidia-arch==0.0.2 \
+        nvidia-arch==1.0.0 \
         yapf==0.40.1 \
         mpi4py==4.1.1 \
         future==1.0.0 \
