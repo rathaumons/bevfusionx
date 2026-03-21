@@ -134,4 +134,4 @@ cd bevfusionx
 python setup.py develop
 ```
 
-Check the main [README.md](../../README.md) for prepare dataset, run evaluations, and train models.
+Check the main [README.md](https://github.com/rathaumons/bevfusionx#readme) for information on preparing datasets, running evaluations, training models, and visualizing results.
