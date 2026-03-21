@@ -38,7 +38,7 @@ def make_cuda_ext(
             min_sm=60 if float(cuda_version) < 12.8 else 75,
             return_mode="sm_list",
         )
-        gencode_flags = nvidia_arch.make_gencode_flags(arches)
+        gencode_flags = nvidia_arch.make_gencode_flags(arches, add_ptx=True)
         extra_compile_args["nvcc"] = extra_args + [
             "-D__CUDA_NO_HALF_OPERATORS__",
             "-D__CUDA_NO_HALF_CONVERSIONS__",
