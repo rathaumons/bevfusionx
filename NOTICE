@@ -45,6 +45,7 @@ To see a full list of added and modified files, run in the git repository:
     A       installation/docker/docker-compose-cu126.yml
     A       installation/docker/docker-compose-cu128.yml
     A       installation/docker/docker-compose-cu130.yml
+    A       installation/docker/dockerfile.md
     A       installation/docker/pinned/Dockerfile.cu113
     A       installation/docker/pinned/Dockerfile.cu121
     A       installation/docker/pinned/Dockerfile.cu126
