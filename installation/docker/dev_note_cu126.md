@@ -249,7 +249,7 @@ This file contains the original, fully-tested manual steps used to build the BEV
 
     ```bash
     cd mmcv
-    export TORCH_CUDA_ARCH_LIST="8.6;8.9"
+    export TORCH_CUDA_ARCH_LIST="8.6;8.9"  # Use nvidia-arch for better control -> https://github.com/rathaROG/nvidia-arch
     MAKEFLAGS="-j$(nproc)" MMCV_WITH_OPS=1 FORCE_CUDA=1 pip install -e . --no-build-isolation -v
     ```
 
@@ -286,7 +286,7 @@ This file contains the original, fully-tested manual steps used to build the BEV
 
   ```bash
   export CUMM_CUDA_VERSION="12.6"
-  export CUMM_CUDA_ARCH_LIST="all"
+  export CUMM_CUDA_ARCH_LIST="all"  # Use nvidia-arch for better control -> https://github.com/rathaROG/nvidia-arch
   export CUMM_DISABLE_JIT="1"
   export SPCONV_DISABLE_JIT="1"
   export CUMM_NVRTC_STD="c++17"

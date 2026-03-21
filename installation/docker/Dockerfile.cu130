@@ -59,7 +59,7 @@ RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 100 && \
 # ------------------------------------------------------------
 RUN source /root/miniconda3/bin/activate bevfusion && \
     pip install -U pip wheel "setuptools<82" && \
-    pip install numpy==1.26.4 "opencv-python<4.12"
+    pip install nvidia-arch==1.0.0 numpy==1.26.4 "opencv-python<4.12"
 
 RUN source /root/miniconda3/bin/activate bevfusion && \
     pip install torch==2.9.1 torchvision==0.24.1 --index-url https://download.pytorch.org/whl/cu130
@@ -80,6 +80,10 @@ ENV LD_LIBRARY_PATH=${OPENMPI_HOME}/lib:${LD_LIBRARY_PATH}
 ENV OMPI_MCA_plm=isolated
 ENV OMPI_MCA_plm_rsh_agent=sh
 
+# Generate the CUDA arch list and store in /root/cuda_arch_list.txt
+RUN source /root/miniconda3/bin/activate bevfusion && \
+    python -c "import nvidia_arch; print(nvidia_arch.get_architectures(gpu_type='cons+jets', min_sm=60, return_mode='cc_string', add_ptx=True))" > /root/cuda_arch_list.txt
+
 # ------------------------------------------------------------
 # OpenMPI 4.0.7 with CUDA
 # ------------------------------------------------------------
@@ -95,22 +99,15 @@ RUN source /root/miniconda3/bin/activate bevfusion && \
 # ------------------------------------------------------------
 # MMCV 1.7.3 with CUDA
 # ------------------------------------------------------------
-
-# Force CUDA
-# For compute capability, see: 
-# https://developer.nvidia.com/cuda/gpus
-ARG TORCH_CUDA_ARCH_LIST="8.6;8.9;12.0"
-ENV FORCE_CUDA="1"
-ENV TORCH_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST}"
-
-# Build and install
 ARG MMCV_REF=v1.7.3-bevfusionx
 RUN source /root/miniconda3/bin/activate bevfusion && \
     cd /root && \
     wget -O mmcv.tar.gz https://github.com/rathaROG/mmcv/archive/refs/tags/${MMCV_REF}.tar.gz && \
     mkdir -p mmcv && tar -xzf mmcv.tar.gz --strip-components=1 -C mmcv && \
     cd mmcv && \
-    MAKEFLAGS="-j$(nproc)" MMCV_WITH_OPS=1 pip install -e . --no-build-isolation -v
+    export TORCH_CUDA_ARCH_LIST=$(cat /root/cuda_arch_list.txt) && \
+    echo "TORCH_CUDA_ARCH_LIST: $TORCH_CUDA_ARCH_LIST" && \
+    MAKEFLAGS="-j$(nproc)" MMCV_WITH_OPS=1 FORCE_CUDA=1 TORCH_CUDA_ARCH_LIST="$TORCH_CUDA_ARCH_LIST" pip install -e . --no-build-isolation -v
 
 # ------------------------------------------------------------
 # Other Python requirements
@@ -132,8 +129,20 @@ RUN source /root/miniconda3/bin/activate bevfusion && \
         numpy==1.26.4 \
         "opencv-python<4.12"
 
+ENV CUMM_CUDA_VERSION="13.0"
+ENV CUMM_DISABLE_JIT="1"
+ENV SPCONV_DISABLE_JIT="1"
+ENV CUMM_NVRTC_STD="c++17"
+
 RUN source /root/miniconda3/bin/activate bevfusion && \
-    pip install cumm-cu130 spconv-cu130 --extra-index-url https://ratharog.github.io/cumm-spconv/
+    export CUMM_CUDA_ARCH_LIST=$(cat /root/cuda_arch_list.txt) && \
+    echo "CUMM_CUDA_ARCH_LIST: $CUMM_CUDA_ARCH_LIST" && \
+    pip install git+https://github.com/rathaROG/cumm-gpu.git@v0.8.5
+
+RUN source /root/miniconda3/bin/activate bevfusion && \
+    export CUMM_CUDA_ARCH_LIST=$(cat /root/cuda_arch_list.txt) && \
+    echo "CUMM_CUDA_ARCH_LIST: $CUMM_CUDA_ARCH_LIST" && \
+    pip install git+https://github.com/rathaROG/spconv-gpu.git@v2.3.11 --no-deps --no-build-isolation
 
 RUN source /root/miniconda3/bin/activate bevfusion && \
     pip install --no-build-isolation flash-attn==1.0.9

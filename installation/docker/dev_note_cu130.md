@@ -258,7 +258,7 @@ This file contains the original, fully-tested manual steps used to build the BEV
 
     ```bash
     cd mmcv
-    export TORCH_CUDA_ARCH_LIST="8.6;8.9;12.0"
+    export TORCH_CUDA_ARCH_LIST="8.6;8.9;12.0"  # Use nvidia-arch for better control -> https://github.com/rathaROG/nvidia-arch
     MAKEFLAGS="-j$(nproc)" MMCV_WITH_OPS=1 FORCE_CUDA=1 pip install -e . --no-build-isolation -v
     ```
 
@@ -291,7 +291,7 @@ This file contains the original, fully-tested manual steps used to build the BEV
       "opencv-python<4.12"
   ```
 
-- Install custom [`cumm`](https://github.com/rathaROG/cumm-gpu) and [`spconv`](https://github.com/rathaROG/spconv-gpu) with CUDA 13.0:
+- Install the prebuilt wheels of custom [`cumm`](https://github.com/rathaROG/cumm-gpu) and [`spconv`](https://github.com/rathaROG/spconv-gpu) with CUDA 13.0 (Or build from sources with [`nvidia-arch`](https://github.com/rathaROG/nvidia-arch) for robust SM/CC architecture control):
 
   ```bash
   pip install cumm-cu130 spconv-cu130 --extra-index-url https://ratharog.github.io/cumm-spconv/
