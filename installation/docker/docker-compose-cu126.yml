@@ -1,13 +1,13 @@
 services:
   bev-train:
-    container_name: bev-train-cu126
+    container_name: bevfusionx-cu126
     build:
       context: .
       dockerfile: Dockerfile.cu126
-    image: bev-train:cu126
+    image: bevfusionx:cu126
     working_dir: /workspace
     volumes:
-      - /home/${USER}/docker/bev_train_cu126:/workspace
+      - /home/${USER}/docker/bevfusionx-cu126:/workspace
     stdin_open: true
     tty: true
     command: bash

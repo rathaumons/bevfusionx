@@ -2,7 +2,7 @@
 
 Here, you can build and run BEVFusionx using the provided Dockerfiles and Docker Compose files for easy building and management:
 
-- [`Dockerfile.cu130`](Dockerfile.cu130) · [`docker-compose-cu130.yml`](docker-compose-cu130.yml)
+- [`Dockerfile.cu130`](Dockerfile.cu130) · [`docker-compose-cu130.yml`](docker-compose-cu130.yml) 🆕
 - [`Dockerfile.cu128`](Dockerfile.cu128) · [`docker-compose-cu128.yml`](docker-compose-cu128.yml)
 - [`Dockerfile.cu126`](Dockerfile.cu126) · [`docker-compose-cu126.yml`](docker-compose-cu126.yml)
 - [`Dockerfile.cu121`](Dockerfile.cu121) · [`docker-compose-cu121.yml`](docker-compose-cu121.yml)
@@ -30,8 +30,8 @@ docker build -f Dockerfile.cu130 -t bevfusionx:cu130 .
 
 ```bash
 # For CUDA 13.0
-docker save bevfusionx:cu130 -o bevfusionx_cu130_2026.tar
-sha256sum bevfusionx_cu130_2026.tar > bevfusionx_cu130_2026.tar.sha256
+docker save bevfusionx:cu130 -o bevfusionx_cu130.tar
+sha256sum bevfusionx_cu130.tar > bevfusionx_cu130.tar.sha256
 ```
 
 </details>
@@ -129,7 +129,7 @@ Clone and build `bevfusion` inside the running container:
 
 ```bash
 cd /workspace
-git clone https://github.com/rathaumons/bevfusionx.git -b v1.0.0-bevfusionx
+git clone -b v1.0.0-bevfusionx https://github.com/rathaumons/bevfusionx.git -b v1.0.0-bevfusionx
 cd bevfusionx
 python setup.py develop
 ```

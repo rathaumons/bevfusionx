@@ -1,10 +1,6 @@
-# DEV NOTE 20260318 (CUDA 12.8)
+# DEV NOTE 20260321 (CUDA 12.8)
 
 This file contains the original, fully-tested manual steps used to build the BEVFusion training environment interactively inside a container.
-
-> Recommended usage now:
-> - Use [`Dockerfile.cu128`](Dockerfile.cu128) + [`docker-compose-cu128.yml`](docker-compose-cu128.yml) for reproducible builds (see [`README.md`](README.md))
-> - Keep this file as a reference / troubleshooting log
 
 ## Prepare prerequisites
 
@@ -103,18 +99,18 @@ This file contains the original, fully-tested manual steps used to build the BEV
   docker pull nvidia/cuda:12.8.0-cudnn-devel-ubuntu20.04
   ```
 
-- Create and run `bev-train-cu128` container with a mounted workspace `home/$USER/docker/bev_train_cu128:/workspace`:
+- Create and run `bevfusionx-cu128` container with a mounted workspace `home/$USER/docker/bevfusionx-cu128:/workspace`:
 
   ```bash
   docker run --gpus all -it \
-      --name bev-train-cu128 \
+      --name bevfusionx-cu128 \
       --shm-size=32g \
-      -v /home/$USER/docker/bev_train_cu128:/workspace \
+      -v /home/$USER/docker/bevfusionx-cu128:/workspace \
       nvidia/cuda:12.8.0-cudnn-devel-ubuntu20.04 \
       bash
   ```
 
-- Install all necessary packages and miniconda inside the running container `bev-train-cu128`:
+- Install all necessary packages and miniconda inside the running container `bevfusionx-cu128`:
 
   <details><summary>Show more details</summary>
 
@@ -171,11 +167,11 @@ This file contains the original, fully-tested manual steps used to build the BEV
 
 ## Install requirements
 
-- Enter the container `bev-train-cu128` from host:
+- Enter the container `bevfusionx-cu128` from host:
 
   ```bash
-  docker restart bev-train-cu128
-  docker exec -it bev-train-cu128 bash
+  docker restart bevfusionx-cu128
+  docker exec -it bevfusionx-cu128 bash
   ```
 
 - Install `opencv-python` and `numpy`:
@@ -301,11 +297,11 @@ This file contains the original, fully-tested manual steps used to build the BEV
 
 ## Export docker image
 
-- Enter the container `bev-train-cu128` from host:
+- Enter the container `bevfusionx-cu128` from host:
 
   ```bash
-  docker restart bev-train-cu128
-  docker exec -it bev-train-cu128 bash
+  docker restart bevfusionx-cu128
+  docker exec -it bevfusionx-cu128 bash
   ```
 
 - Clean inside the running container:
@@ -320,33 +316,33 @@ This file contains the original, fully-tested manual steps used to build the BEV
   rm -rf ~/.cache/*
   ```
 
-- Export to `bev_train_cu128_2026.tar` from host:
+- Export to `bevfusionx_cu128.tar` from host:
 
   ```bash
-  docker commit bev-train-cu128 bev-train:cu128
-  docker save -o bev_train_cu128_2026.tar bev-train:cu128
-  sha256sum bev_train_cu128_2026.tar > bev_train_cu128_2026.tar.sha256
+  docker commit bevfusionx-cu128 bevfusionx:cu128
+  docker save -o bevfusionx_cu128.tar bevfusionx:cu128
+  sha256sum bevfusionx_cu128.tar > bevfusionx_cu128.tar.sha256
   ```
 
 ## Import docker image
 
 - Install Docker on host -> See [[Prepare prerequisites](#prepare-prerequisites)]
 
-- Import from `bev_train_cu128_2026.tar` in host:
+- Import from `bevfusionx_cu128.tar` in host:
 
   ```bash
-  sha256sum -c bev_train_cu128_2026.tar.sha256
-  docker load -i bev_train_cu128_2026.tar
+  sha256sum -c bevfusionx_cu128.tar.sha256
+  docker load -i bevfusionx_cu128.tar
   ```
 
-- Start the container with a mounted workspace `home/$USER/docker/bev_train_cu128:/workspace`:
+- Start the container with a mounted workspace `home/$USER/docker/bevfusionx-cu128:/workspace`:
 
   ```bash
   docker run --gpus all -it \
-      --name bev-train-cu128 \
+      --name bevfusionx-cu128 \
       --shm-size=32g \
-      -v /home/$USER/docker/bev_train_cu128:/workspace \
-      bev-train:cu128 \
+      -v /home/$USER/docker/bevfusionx-cu128:/workspace \
+      bevfusionx:cu128 \
       bash
   ```
 
@@ -355,18 +351,18 @@ This file contains the original, fully-tested manual steps used to build the BEV
 - Enter the container from host:
 
   ```bash
-  docker restart bev-train-cu128
-  docker exec -it bev-train-cu128 bash
+  docker restart bevfusionx-cu128
+  docker exec -it bevfusionx-cu128 bash
   ```
 
 - Clone and build `bevfusion` inside the running container:
 
   ```bash
   cd /workspace
-  git clone https://github.com/rathaumons/bevfusionx.git
-  cd bevfusion
+  git clone -b v1.0.0-bevfusionx https://github.com/rathaumons/bevfusionx.git
+  cd bevfusionx
   python setup.py develop
   pip list
   ```
 
-- Check the main [README.md](../README.md) for prepare dataset, run evaluations, and train models.
+- Check the main [README.md](https://github.com/rathaumons/bevfusionx#readme) for information on preparing datasets, running evaluations, training models, and visualizing results.
