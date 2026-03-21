@@ -5,7 +5,7 @@ You can easily pull the [**official images from Docker Hub 🐳**](https://hub.d
 - **Step 1: On host**
 
   ```bash
-  # Pull from Docker Hub
+  # Pull from Docker Hub (lastest=cu130)
   docker pull ratharog/bevfusionx:latest
   
   # Start a Docker container with /workspace mounted @ /home/$USER/docker/bevfusionx-latest
