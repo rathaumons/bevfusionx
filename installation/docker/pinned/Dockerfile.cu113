@@ -134,7 +134,7 @@ RUN source /root/miniconda3/bin/activate bevfusion && \
 RUN source /root/miniconda3/bin/activate bevfusion && \
     export CUMM_CUDA_ARCH_LIST=$(cat /root/cuda_arch_list.txt) && \
     echo "CUMM_CUDA_ARCH_LIST: $CUMM_CUDA_ARCH_LIST" && \
-    pip install git+https://github.com/rathaROG/spconv-gpu.git@v2.3.11 --ignore-requires-python --no-deps --no-build-isolation
+    pip install git+https://github.com/rathaROG/spconv-gpu.git@v2.4.0 --ignore-requires-python --no-deps --no-build-isolation
 
 RUN source /root/miniconda3/bin/activate bevfusion && \
     pip install --no-build-isolation flash-attn==1.0.9

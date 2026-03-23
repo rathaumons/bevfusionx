@@ -291,7 +291,7 @@ This file contains the original, fully-tested manual steps used to build the BEV
   export SPCONV_DISABLE_JIT="1"
   export CUMM_NVRTC_STD="c++14"
   pip install git+https://github.com/rathaROG/cumm-gpu.git@v0.7.13
-  pip install git+https://github.com/rathaROG/spconv-gpu.git@v2.3.11 --no-deps --no-build-isolation
+  pip install git+https://github.com/rathaROG/spconv-gpu.git@v2.4.0 --no-deps --no-build-isolation
   ```
 
 - Install `flash-attn==1.0.9` and `setuptools==59.5.0`:
