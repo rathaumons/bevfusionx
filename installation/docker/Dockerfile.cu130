@@ -59,7 +59,7 @@ RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 100 && \
 # ------------------------------------------------------------
 RUN source /root/miniconda3/bin/activate bevfusion && \
     pip install -U pip wheel "setuptools<82" && \
-    pip install nvidia-arch==4.0.1 numpy==1.26.4 "opencv-python<4.12"
+    pip install nvidia-arch==5.0.0 numpy==1.26.4 "opencv-python<4.12"
 
 RUN source /root/miniconda3/bin/activate bevfusion && \
     pip install torch==2.9.1 torchvision==0.24.1 --index-url https://download.pytorch.org/whl/cu130
@@ -121,7 +121,7 @@ RUN source /root/miniconda3/bin/activate bevfusion && \
         "mmdet<3" \
         nuscenes-devkit==1.1.11 \
         numba \
-        nvidia-arch>=4.0.1 \
+        nvidia-arch>=5.0.0 \
         yapf==0.40.1 \
         mpi4py \
         future \
