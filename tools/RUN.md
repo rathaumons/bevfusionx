@@ -163,3 +163,7 @@ For more details, see [train.py](https://github.com/rathaumons/bevfusionx/blob/m
     ```
 
   </details>
+
+## Next step
+
+Visualization: [VISUALIZATION.md](https://github.com/rathaumons/bevfusionx/blob/main/tools/VISUALIZATION.md)
