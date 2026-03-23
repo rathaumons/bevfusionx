@@ -2,7 +2,7 @@
 
 ## Prepare nuScenes dataset
 
-For nuScenes dataset:
+For [nuScenes](https://www.nuscenes.org/nuscenes) dataset:
 
 - Default path [`bevfusionx/data/nuscenes`](./data/nuscenes):
 
@@ -45,3 +45,7 @@ For pretrain models, simply run [download_pretrained.sh](tools/download_pretrain
 - [camera-only-det.pth](https://www.dropbox.com/scl/fi/pxfaz1nc07qa2twlatzkz/camera-only-det.pth?rlkey=f5do81fawie0ssbg9uhrm6p30)
 - [camera-only-seg.pth](https://www.dropbox.com/scl/fi/cwpcu80n0shmwraegi6z4/camera-only-seg.pth?rlkey=l60kdaz19fq3gwocsjk09e60z)
 - [swint-nuimages-pretrained.pth](https://www.dropbox.com/scl/fi/f3e67wgn2omoftah4ceri/swint-nuimages-pretrained.pth?rlkey=k9kafympye80b3b1quutti4yq)
+
+## Next step
+
+Model evaluation and training: [RUN.md](https://github.com/rathaumons/bevfusionx/blob/main/tools/RUN.md)
