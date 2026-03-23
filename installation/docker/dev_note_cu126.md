@@ -290,7 +290,7 @@ This file contains the original, fully-tested manual steps used to build the BEV
   export CUMM_DISABLE_JIT="1"
   export SPCONV_DISABLE_JIT="1"
   export CUMM_NVRTC_STD="c++17"
-  pip install git+https://github.com/rathaROG/cumm-gpu.git@v0.8.5
+  pip install git+https://github.com/rathaROG/cumm-gpu.git@v0.9.0
   pip install git+https://github.com/rathaROG/spconv-gpu.git@v2.4.0 --no-deps --no-build-isolation
   ```
 

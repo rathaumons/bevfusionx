@@ -129,7 +129,7 @@ ENV CUMM_NVRTC_STD="c++17"
 RUN source /root/miniconda3/bin/activate bevfusion && \
     export CUMM_CUDA_ARCH_LIST=$(cat /root/cuda_arch_list.txt) && \
     echo "CUMM_CUDA_ARCH_LIST: $CUMM_CUDA_ARCH_LIST" && \
-    pip install git+https://github.com/rathaROG/cumm-gpu.git@v0.8.5
+    pip install git+https://github.com/rathaROG/cumm-gpu.git@v0.9.0
 
 RUN source /root/miniconda3/bin/activate bevfusion && \
     export CUMM_CUDA_ARCH_LIST=$(cat /root/cuda_arch_list.txt) && \
