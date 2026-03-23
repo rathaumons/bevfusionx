@@ -96,7 +96,7 @@ This file contains the original, fully-tested manual steps used to build the BEV
 - Pull the [official NVIDIA CUDA 12.8.0](https://gitlab.com/nvidia/container-images/cuda/blob/master/doc/unsupported-tags.md#cuda-1280-2) on host:
 
   ```bash
-  docker pull nvidia/cuda:12.8.0-cudnn-devel-ubuntu20.04
+  docker pull nvidia/cuda:12.8.1-cudnn-devel-ubuntu20.04
   ```
 
 - Create and run `bevfusionx-cu128` container with a mounted workspace `home/$USER/docker/bevfusionx-cu128:/workspace`:
@@ -106,7 +106,7 @@ This file contains the original, fully-tested manual steps used to build the BEV
       --name bevfusionx-cu128 \
       --shm-size=32g \
       -v /home/$USER/docker/bevfusionx-cu128:/workspace \
-      nvidia/cuda:12.8.0-cudnn-devel-ubuntu20.04 \
+      nvidia/cuda:12.8.1-cudnn-devel-ubuntu20.04 \
       bash
   ```
 

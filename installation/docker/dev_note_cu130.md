@@ -96,7 +96,7 @@ This file contains the original, fully-tested manual steps used to build the BEV
 - Pull the [official NVIDIA CUDA 13.0.1](https://gitlab.com/nvidia/container-images/cuda/blob/master/doc/unsupported-tags.md#cuda-1301-1) on host:
 
   ```bash
-  docker pull nvidia/cuda:13.0.1-cudnn-devel-ubuntu22.04
+  docker pull nvidia/cuda:13.0.2-cudnn-devel-ubuntu24.04
   ```
 
 - Create and run `bevfusionx-cu130` container with a mounted workspace `home/$USER/docker/bevfusionx-cu130:/workspace`:
@@ -106,7 +106,7 @@ This file contains the original, fully-tested manual steps used to build the BEV
       --name bevfusionx-cu130 \
       --shm-size=32g \
       -v /home/$USER/docker/bevfusionx-cu130:/workspace \
-      nvidia/cuda:13.0.1-cudnn-devel-ubuntu22.04 \
+      nvidia/cuda:13.0.2-cudnn-devel-ubuntu24.04 \
       bash
   ```
 
