@@ -2,7 +2,7 @@
 
 ![demo](assets/demo.gif)
 
-[**BEVFusionx**](https://github.com/rathaumons/bevfusionx) builds on top of [BEVFusion · db75150](https://github.com/mit-han-lab/bevfusion/tree/db75150717a9462cb60241e36ba28d65f6908607), introducing extra documentation, impactful enhancements, and compatibility with both legacy PyTorch 1.x & CUDA 11.x, and new PyTorch 2.x & CUDA 12.x/13.x. ✨
+[**BEVFusionx**](https://github.com/rathaumons/bevfusionx) builds on top of [BEVFusion · db75150](https://github.com/mit-han-lab/bevfusion/tree/db75150717a9462cb60241e36ba28d65f6908607), introducing extra documentation, impactful enhancements, and compatibility with both legacy **PyTorch 1 + CUDA 11**, and new **PyTorch 2 + CUDA 12/13**. ✨
 
 All sensor modalities (**Camera ✓ LiDAR ✓ RADAR ✓**) are supported and have been thoroughly tested. 😉
 
