@@ -21,7 +21,7 @@ You can easily pull the [**official images from Docker Hub 🐳**](https://hub.d
 
   ```bash
   cd /workspace
-  git clone -b v1.0.0-bevfusionx https://github.com/rathaumons/bevfusionx.git
+  git clone -b v1.1.0-bevfusionx https://github.com/rathaumons/bevfusionx.git
   cd bevfusionx
   python setup.py develop
   ```

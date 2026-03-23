@@ -129,7 +129,7 @@ Clone and build `bevfusion` inside the running container:
 
 ```bash
 cd /workspace
-git clone -b v1.0.0-bevfusionx https://github.com/rathaumons/bevfusionx.git -b v1.0.0-bevfusionx
+git clone -b v1.1.0-bevfusionx https://github.com/rathaumons/bevfusionx.git -b v1.1.0-bevfusionx
 cd bevfusionx
 python setup.py develop
 ```
