@@ -1,0 +1,17 @@
+services:
+  bev-train:
+    container_name: bevfusionx-cu130d
+    build:
+      context: .
+      dockerfile: Dockerfile.cu130d
+    image: bevfusionx:cu130d
+    working_dir: /workspace
+    volumes:
+      - /home/${USER}/docker/bevfusionx-cu130d:/workspace
+    stdin_open: true
+    tty: true
+    command: bash
+    # GPU support (Compose v2 with NVIDIA Container Toolkit)
+    gpus: all
+    # Shared memory
+    shm_size: "32gb"
