@@ -93,7 +93,7 @@ This file contains the original, fully-tested manual steps used to build the BEV
 
 ## Create a container for BEVFusion
 
-- Pull the [official NVIDIA CUDA 12.6.2](https://gitlab.com/nvidia/container-images/cuda/blob/master/doc/unsupported-tags.md#cuda-1262-2) on host:
+- Pull the [official NVIDIA CUDA 12.6.3](https://hub.docker.com/layers/nvidia/cuda/12.6.3-cudnn-devel-ubuntu20.04) on host:
 
   ```bash
   docker pull nvidia/cuda:12.6.3-cudnn-devel-ubuntu20.04
@@ -181,10 +181,10 @@ This file contains the original, fully-tested manual steps used to build the BEV
   pip install numpy==1.26.4 "opencv-python<4.12"
   ```
 
-- Install [PyTorch](https://pytorch.org/) 2.10.0 + CUDA 12.6 (Max support: `compute_90`, `sm_90`):
+- Install [PyTorch](https://pytorch.org/) 2.11.0 + CUDA 12.6 (Max support: `compute_90`, `sm_90`):
 
   ```bash
-  pip install torch==2.10.0 torchvision==0.25.0 --index-url https://download.pytorch.org/whl/cu126
+  pip install torch==2.11.0 torchvision==0.26.0 --index-url https://download.pytorch.org/whl/cu126
   ```
 
 - Install [OpenMPI v4.0.7](https://www.open-mpi.org/software/ompi/v4.0/) with CUDA:

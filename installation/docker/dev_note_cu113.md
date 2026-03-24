@@ -93,7 +93,7 @@ This file contains the original, fully-tested manual steps used to build the BEV
 
 ## Create a container for BEVFusion
 
-- Pull the [official NVIDIA CUDA 11.3.1](https://gitlab.com/nvidia/container-images/cuda/blob/master/doc/unsupported-tags.md#cuda-1131) on host:
+- Pull the [official NVIDIA CUDA 11.3.1](https://hub.docker.com/layers/nvidia/cuda/11.3.1-cudnn8-devel-ubuntu20.04) on host:
 
   ```bash
   docker pull nvidia/cuda:11.3.1-cudnn8-devel-ubuntu20.04
