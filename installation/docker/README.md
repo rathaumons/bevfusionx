@@ -30,11 +30,12 @@ You can easily pull the [**official images from Docker Hub 🐳**](https://hub.d
 
 Or, if you want to build and run BEVFusionx yourself, use the provided Dockerfiles and Docker Compose files for easy building and management (See details [here](dockerfile.md)):
 
-- [`Dockerfile.cu130`](Dockerfile.cu130) · [`docker-compose-cu130.yml`](docker-compose-cu130.yml) 🆕
-- [`Dockerfile.cu128`](Dockerfile.cu128) · [`docker-compose-cu128.yml`](docker-compose-cu128.yml)
-- [`Dockerfile.cu126`](Dockerfile.cu126) · [`docker-compose-cu126.yml`](docker-compose-cu126.yml)
-- [`Dockerfile.cu121`](Dockerfile.cu121) · [`docker-compose-cu121.yml`](docker-compose-cu121.yml)
-- [`Dockerfile.cu113`](Dockerfile.cu113) · [`docker-compose-cu113.yml`](docker-compose-cu113.yml)
+- Data center GPUs: [`Dockerfile.cu130d`](Dockerfile.cu130d) · [`docker-compose-cu130d.yml`](docker-compose-cu130d.yml) 🆕
+- Consumer/Workstation/Jetson GPUs: [`Dockerfile.cu130`](Dockerfile.cu130) · [`docker-compose-cu130.yml`](docker-compose-cu130.yml) 🆕
+- Consumer/Workstation/Jetson GPUs: [`Dockerfile.cu128`](Dockerfile.cu128) · [`docker-compose-cu128.yml`](docker-compose-cu128.yml)
+- Consumer/Workstation/Jetson GPUs: [`Dockerfile.cu126`](Dockerfile.cu126) · [`docker-compose-cu126.yml`](docker-compose-cu126.yml)
+- Consumer/Workstation/Jetson GPUs: [`Dockerfile.cu121`](Dockerfile.cu121) · [`docker-compose-cu121.yml`](docker-compose-cu121.yml)
+- Consumer/Workstation/Jetson GPUs: [`Dockerfile.cu113`](Dockerfile.cu113) · [`docker-compose-cu113.yml`](docker-compose-cu113.yml)
 
 Or, if you want fully manual, step-by-step dev notes for different CUDA versions, see:
 
