@@ -62,7 +62,7 @@ RUN source /root/miniconda3/bin/activate bevfusion && \
     pip install nvidia-arch==6.0.0 numpy==1.26.4 opencv-python==4.11.0.86
 
 RUN source /root/miniconda3/bin/activate bevfusion && \
-    pip install torch==2.9.1 torchvision==0.24.1 --index-url https://download.pytorch.org/whl/cu130
+    pip install torch==2.11.0 torchvision==0.26.0 --index-url https://download.pytorch.org/whl/cu130
 
 # ------------------------------------------------------------
 # Global ENV
