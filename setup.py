@@ -32,12 +32,16 @@ def make_cuda_ext(
         define_macros += [("WITH_CUDA", None)]
         extension = CUDAExtension
         cuda_version = torch.version.cuda
-        arches = nvidia_arch.get_architectures(
-            cuda_ver=cuda_version,
-            gpu_type="cons+jets",
-            min_sm=60,
-            return_mode="sm_list",
-        )
+        bevx_cuda_arch = os.getenv("BEVX_CUDA_ARCH_LIST")
+        if bevx_cuda_arch_str is not None:
+            arches = nvidia_arch.validate_arch_string(bevx_cuda_arch)
+        else:
+            arches = nvidia_arch.get_architectures(
+                cuda_ver=cuda_version,
+                gpu_type=os.getenv("BEVX_GPU_TYPE", "cons+jets"),
+                min_sm=os.getenv("BEVX_MIN_SM", "60"),
+                return_mode="sm_list"
+            )
         gencode_flags = nvidia_arch.make_gencode_flags(arches, add_ptx=True)
         extra_compile_args["nvcc"] = extra_args + [
             "-D__CUDA_NO_HALF_OPERATORS__",
