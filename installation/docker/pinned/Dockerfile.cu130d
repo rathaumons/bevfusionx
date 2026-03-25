@@ -59,7 +59,7 @@ RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 100 && \
 # ------------------------------------------------------------
 RUN source /root/miniconda3/bin/activate bevfusion && \
     pip install -U pip wheel "setuptools<82" && \
-    pip install nvidia-arch==6.0.0 numpy==1.26.4 opencv-python==4.11.0.86
+    pip install nvidia-arch==6.1.0 numpy==1.26.4 opencv-python==4.11.0.86
 
 RUN source /root/miniconda3/bin/activate bevfusion && \
     pip install torch==2.11.0 torchvision==0.26.0 --index-url https://download.pytorch.org/whl/cu130
@@ -82,7 +82,7 @@ ENV OMPI_MCA_plm_rsh_agent=sh
 
 # Generate the CUDA arch list and store in /root/cuda_arch_list.txt
 RUN source /root/miniconda3/bin/activate bevfusion && \
-    python -c "import nvidia_arch; print(nvidia_arch.get_architectures(gpu_type='dcen', min_sm=75, return_mode='cc_string', add_ptx=True))" > /root/cuda_arch_list.txt
+    python -c "import nvidia_arch; print(nvidia_arch.get_arches(gpu_type='dcen', min_sm=75, return_mode='cc_string', add_ptx=True))" > /root/cuda_arch_list.txt
 
 # ------------------------------------------------------------
 # OpenMPI 4.0.7 with CUDA
@@ -121,7 +121,7 @@ RUN source /root/miniconda3/bin/activate bevfusion && \
         mmdet==2.28.2 \
         nuscenes-devkit==1.1.11 \
         numba==0.64.0 \
-        nvidia-arch==6.0.0 \
+        nvidia-arch==6.1.0 \
         yapf==0.40.1 \
         mpi4py==4.1.1 \
         future==1.0.0 \
