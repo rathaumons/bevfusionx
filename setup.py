@@ -33,7 +33,7 @@ def make_cuda_ext(
         extension = CUDAExtension
         cuda_version = torch.version.cuda
         bevx_cuda_arch = os.getenv("BEVX_CUDA_ARCH_LIST")
-        if bevx_cuda_arch_str is not None:
+        if bevx_cuda_arch is not None:
             arches = nvidia_arch.validate_arch_string(bevx_cuda_arch)
         else:
             arches = nvidia_arch.get_architectures(
