@@ -33,7 +33,7 @@ You can easily pull the [**official images from Docker Hub 🐳**](https://hub.d
   - Full control: Use the `BEVX_CUDA_ARCH_LIST` environment variable to specify custom architectures (e.g., "8.9;12.0"; see [`nvidia-arch`](https://github.com/rathaROG/nvidia-arch) docs for syntax). For example, for normal consumer GPUs from **NVIDIA RTX 4000/5000** series and **NVIDIA DGX Spark**:
 
     ```bash
-    BEVX_CUDA_ARCH_LIST=8.9;12.0;12.1+PTX python setup.py develop
+    BEVX_CUDA_ARCH_LIST="8.9;12.0;12.1+PTX" python setup.py develop
     ```
 
   - Filtered auto-detection: Use `BEVX_GPU_TYPE` to specify the GPU type (`gpu_type`) and `BEVX_MIN_SM` to set the minimum SM number (`min_sm`) for auto-filtering via the [`nvidia-arch`](https://github.com/rathaROG/nvidia-arch) package. For example, for Data Center GPUs from **NVIDIA T4, A100, H100, ...** to **NVIDIA RTX PRO 6000 Blackwell Server Edition**:
