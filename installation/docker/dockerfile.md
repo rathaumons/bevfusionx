@@ -129,9 +129,23 @@ Clone and build `bevfusion` inside the running container:
 
 ```bash
 cd /workspace
-git clone -b v1.1.0-bevfusionx https://github.com/rathaumons/bevfusionx.git -b v1.1.0-bevfusionx
+git clone -b v1.2.0-bevfusionx https://github.com/rathaumons/bevfusionx.git
 cd bevfusionx
 python setup.py develop
 ```
+
+From version 1.2.0, you can fully control CUDA architecture selection from the terminal when building extensions:
+
+- Full control: Use the `BEVX_CUDA_ARCH_LIST` environment variable to specify custom architectures (e.g., "8.9;12.0"; see [`nvidia-arch`](https://github.com/rathaROG/nvidia-arch) docs for syntax). For example, for normal consumer GPUs from **NVIDIA RTX 4000/5000** series and **NVIDIA DGX Spark**:
+
+  ```bash
+  BEVX_CUDA_ARCH_LIST=8.9;12.0;12.1+PTX python setup.py develop
+  ```
+
+- Filtered auto-detection: Use `BEVX_GPU_TYPE` to specify the GPU type (`gpu_type`) and `BEVX_MIN_SM` to set the minimum SM number (`min_sm`) for auto-filtering via the [`nvidia-arch`](https://github.com/rathaROG/nvidia-arch) package. For example, for Data Center GPUs from **NVIDIA T4, A100, H100, ...** to **NVIDIA RTX PRO 6000 Blackwell Server Edition**:
+
+  ```bash
+  BEVX_GPU_TYPE=dcen BEVX_MIN_SM=75 python setup.py develop
+  ```
 
 Check the main [README.md](https://github.com/rathaumons/bevfusionx#readme) for information on preparing datasets, running evaluations, training models, and visualizing results.
