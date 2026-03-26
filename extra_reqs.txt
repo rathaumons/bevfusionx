@@ -1,7 +1,8 @@
+--extra-index-url https://rathaumons.github.io/bevfusionx-index/
 psutil
 Pillow<10
 tqdm
-git+https://github.com/rathaumons/torchpack.git
+torchpack>=0.3.2
 mmdet<3
 nuscenes-devkit==1.1.11
 numba
