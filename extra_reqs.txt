@@ -1,4 +1,4 @@
---extra-index-url https://rathaumons.github.io/bevfusionx-index/
+--extra-index-url https://rathaumons.github.io/bevfusionx-index/any/
 psutil
 Pillow<10
 tqdm
