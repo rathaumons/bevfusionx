@@ -1,4 +1,4 @@
-# DEV NOTE 20260321 (CUDA 12.1)
+# DEV NOTE 20260405 (CUDA 12.1)
 
 This file contains the original, fully-tested manual steps used to build the BEVFusion training environment interactively inside a container.
 
@@ -233,47 +233,25 @@ This file contains the original, fully-tested manual steps used to build the BEV
 
   </details>
 
-- Install [MMCV v1.7.3](https://github.com/rathaROG/mmcv/releases/tag/v1.7.3-bevfusionx) with CUDA:
+- Install [MMCV v1.7.4](https://github.com/rathaROG/mmcv/releases/tag/v1.7.4-bevfusionx) with CUDA:
 
-  <details><summary>Show more details</summary>
-
-  - Clone source:
-
-    ```bash
-    cd ~
-    wget -O mmcv.tar.gz https://github.com/rathaROG/mmcv/archive/refs/tags/v1.7.3-bevfusionx.tar.gz
-    mkdir -p mmcv && tar -xzf mmcv.tar.gz --strip-components=1 -C mmcv
-    ```
-
-  - Config cmake, build, and install:
-
-    ```bash
-    cd mmcv
-    export TORCH_CUDA_ARCH_LIST="8.6;8.9"  # Use nvidia-arch for better control -> https://github.com/rathaROG/nvidia-arch
-    MAKEFLAGS="-j$(nproc)" MMCV_WITH_OPS=1 FORCE_CUDA=1 pip install -e . --no-build-isolation -v
-    ```
-
-  - Quick test:
-
-    ```bash
-    python -W ignore -c "import mmcv"
-    python -W ignore .dev_scripts/check_installation.py
-    ```
-
-  </details>
+  ```bash
+  pip install --extra-index-url https://rathaumons.github.io/bevfusionx-index/cu121/ mmcv-full==1.7.4
+  ```
 
 - Install other required Python packages:
 
   ```bash
   pip install \
+      --extra-index-url https://rathaumons.github.io/bevfusionx-index/any/ \
+      torchpack==0.3.2 \
       psutil \
       "Pillow<10" \
       tqdm \
-      git+https://github.com/rathaumons/torchpack.git \
       "mmdet<3" \
       nuscenes-devkit==1.1.11 \
       numba \
-      nvidia-arch>=7.0.0 \
+      nvidia-arch>=7.1.0 \
       yapf==0.40.1 \
       mpi4py \
       future \
@@ -285,19 +263,14 @@ This file contains the original, fully-tested manual steps used to build the BEV
 - Install custom [`cumm`](https://github.com/rathaROG/cumm-gpu) and [`spconv`](https://github.com/rathaROG/spconv-gpu) with CUDA 12.1:
 
   ```bash
-  export CUMM_CUDA_VERSION="12.1"
-  export CUMM_CUDA_ARCH_LIST="all"  # Use nvidia-arch for better control -> https://github.com/rathaROG/nvidia-arch
-  export CUMM_DISABLE_JIT="1"
-  export SPCONV_DISABLE_JIT="1"
-  export CUMM_NVRTC_STD="c++14"
-  pip install git+https://github.com/rathaROG/cumm-gpu.git@v0.7.13
-  pip install git+https://github.com/rathaROG/spconv-gpu.git@v2.4.0 --no-deps --no-build-isolation
+  pip install --extra-index-url https://ratharog.github.io/cumm-spconv/ cumm-cu121==0.7.14
+  pip install --extra-index-url https://ratharog.github.io/cumm-spconv/ spconv-cu121==2.4.1
   ```
 
-- Install `flash-attn==1.0.9` and `setuptools==59.5.0`:
+- Install `flash-attn==1.2.1` and `setuptools==59.5.0`:
 
   ```bash
-  pip install --no-build-isolation flash-attn==1.0.9
+  pip install --extra-index-url https://rathaumons.github.io/bevfusionx-index/cu121/ flash-attn==1.2.1
   pip install setuptools==59.5.0
   ```
 
@@ -365,7 +338,7 @@ This file contains the original, fully-tested manual steps used to build the BEV
 
   ```bash
   cd /workspace
-  git clone -b v1.2.1-bevfusionx https://github.com/rathaumons/bevfusionx.git
+  git clone -b v1.3.0-bevfusionx https://github.com/rathaumons/bevfusionx.git
   cd bevfusionx
   python setup.py develop
   pip list

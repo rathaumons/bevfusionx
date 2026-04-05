@@ -1,12 +1,12 @@
 --extra-index-url https://rathaumons.github.io/bevfusionx-index/any/
+torchpack>=0.3.2
 psutil
 Pillow<10
 tqdm
-torchpack>=0.3.2
 mmdet<3
 nuscenes-devkit==1.1.11
 numba
-nvidia-arch>=7.0.0
+nvidia-arch>=7.1.0
 yapf==0.40.1
 mpi4py
 future
