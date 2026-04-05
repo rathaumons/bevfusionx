@@ -9,16 +9,6 @@ Here, you can build and run BEVFusionx using the provided Dockerfiles and Docker
 - Consumer/Workstation/Jetson GPUs: [`Dockerfile.cu121`](Dockerfile.cu121) · [`docker-compose-cu121.yml`](docker-compose-cu121.yml)
 - Consumer/Workstation/Jetson GPUs: [`Dockerfile.cu113`](Dockerfile.cu113) · [`docker-compose-cu113.yml`](docker-compose-cu113.yml)
 
-The default build configurations target a broad range of GPUs, which can result in long build times (sometimes several hours). To speed up the process, you can modify the Dockerfile to compile only for the CUDA architectures you actually need. For example, you can generate a list of CUDA compute capabilities suited to your specific GPUs by adjusting the arguments `gpu_type='cons+jets', min_sm=60` in section:
-
-```dockerfile
-# Generate the CUDA arch list and store in /root/cuda_arch_list.txt
-RUN source /root/miniconda3/bin/activate bevfusion && \
-    python -c "import nvidia_arch; print(nvidia_arch.get_arches(gpu_type='cons+jets', min_sm=60, return_mode='cc_string', add_ptx=True))" > /root/cuda_arch_list.txt
-```
-
-For more details, see [`nvidia-arch`](https://github.com/rathaROG/nvidia-arch).
-
 ## Prerequisites
 
 Make sure Docker is correctly installed and configured on host, see: [`prerequisites.md`](prerequisites.md).
