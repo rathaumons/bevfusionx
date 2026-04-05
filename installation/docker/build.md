@@ -117,30 +117,11 @@ docker restart bevfusionx-cu130
 docker exec -it bevfusionx-cu130 bash
 ```
 
-If you didn't follow [Prerequisites](#prerequisites) or due to some unknown reasons, MMCV might need a rebuild to get a proper CUDA support:
-
-<details><summary>Show more details</summary>
-
-```bash
-cd /root/mmcv
-
-# Check if MMCV has CUDA support
-python -W ignore -c "import mmcv"
-python -W ignore .dev_scripts/check_installation.py
-
-# Rebuild if MMCV has no CUDA support
-pip install -U "setuptools<82"
-MAKEFLAGS="-j$(nproc)" MMCV_WITH_OPS=1 FORCE_CUDA=1 pip install -e . --no-build-isolation -v
-pip install setuptools==59.5.0
-```
-
-</details>
-
 Clone and build `bevfusion` inside the running container:
 
 ```bash
 cd /workspace
-git clone -b v1.2.1-bevfusionx https://github.com/rathaumons/bevfusionx.git
+git clone -b v1.3.0-bevfusionx https://github.com/rathaumons/bevfusionx.git
 cd bevfusionx
 python setup.py develop
 ```

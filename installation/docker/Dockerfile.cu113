@@ -51,7 +51,7 @@ RUN dos2unix /root/.bashrc
 # ------------------------------------------------------------
 RUN source /root/miniconda3/bin/activate bevfusion && \
     pip install -U pip wheel "setuptools<82" && \
-    pip install nvidia-arch==7.0.0 numpy==1.26.4 "opencv-python<4.12"
+    pip install nvidia-arch==7.1.0 numpy==1.26.4 "opencv-python<4.12"
 
 RUN source /root/miniconda3/bin/activate bevfusion && \
     pip install torch==1.10.2 torchvision==0.11.3 --index-url https://download.pytorch.org/whl/cu113

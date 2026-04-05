@@ -21,7 +21,7 @@ You can easily pull the [**official images from Docker Hub 🐳**](https://hub.d
 
   ```bash
   cd /workspace
-  git clone -b v1.2.1-bevfusionx https://github.com/rathaumons/bevfusionx.git
+  git clone -b v1.3.0-bevfusionx https://github.com/rathaumons/bevfusionx.git
   cd bevfusionx
   python setup.py develop
   ```
@@ -46,7 +46,7 @@ You can easily pull the [**official images from Docker Hub 🐳**](https://hub.d
 
 - **Step 3**: Check the main [README.md](https://github.com/rathaumons/bevfusionx#readme) for information on preparing datasets, running evaluations, training models, and visualizing results.
 
-Or, if you want to build and run BEVFusionx yourself, use the provided Dockerfiles and Docker Compose files for easy building and management (See details [here](dockerfile.md)):
+Or, if you want to build and run BEVFusionx yourself, use the provided Dockerfiles and Docker Compose files for easy building and management (See details [build.md](build.md)):
 
 - Data center GPUs: [`Dockerfile.cu130d`](Dockerfile.cu130d) · [`docker-compose-cu130d.yml`](docker-compose-cu130d.yml) 🆕
 - Consumer/Workstation/Jetson GPUs: [`Dockerfile.cu130`](Dockerfile.cu130) · [`docker-compose-cu130.yml`](docker-compose-cu130.yml) 🆕
