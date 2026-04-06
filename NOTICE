@@ -34,7 +34,9 @@ To see a full list of added and modified files, run in the git repository:
     A       installation/docker/Dockerfile.cu126
     A       installation/docker/Dockerfile.cu128
     A       installation/docker/Dockerfile.cu130
+    A       installation/docker/Dockerfile.cu130d
     A       installation/docker/README.md
+    A       installation/docker/build.md
     A       installation/docker/dev_note_cu113.md
     A       installation/docker/dev_note_cu121.md
     A       installation/docker/dev_note_cu126.md
@@ -45,12 +47,13 @@ To see a full list of added and modified files, run in the git repository:
     A       installation/docker/docker-compose-cu126.yml
     A       installation/docker/docker-compose-cu128.yml
     A       installation/docker/docker-compose-cu130.yml
-    A       installation/docker/dockerfile.md
+    A       installation/docker/docker-compose-cu130d.yml
     A       installation/docker/pinned/Dockerfile.cu113
     A       installation/docker/pinned/Dockerfile.cu121
     A       installation/docker/pinned/Dockerfile.cu126
     A       installation/docker/pinned/Dockerfile.cu128
     A       installation/docker/pinned/Dockerfile.cu130
+    A       installation/docker/pinned/Dockerfile.cu130d
     A       installation/docker/prerequisites.md
     M       mmdet3d/__init__.py
     M       mmdet3d/core/points/__init__.py
