@@ -260,7 +260,7 @@ This file contains the original, fully-tested manual steps used to build the BEV
       "mmdet<3" \
       nuscenes-devkit==1.1.11 \
       numba \
-      nvidia-arch>=7.1.0 \
+      "nvidia-arch>=7.1.0" \
       yapf==0.40.1 \
       mpi4py \
       future \
