@@ -1,3 +1,8 @@
+# -------------------------------------------------------------------------
+#  Copyright 2026 Ratha SIV. All rights reserved.
+#  Apache-2.0 license
+# -------------------------------------------------------------------------
+
 FROM nvidia/cuda:12.1.0-cudnn8-devel-ubuntu20.04
 
 ENV DEBIAN_FRONTEND=noninteractive
@@ -28,14 +33,14 @@ RUN source /root/miniconda3/bin/activate && \
     conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r && \
     conda update --all -y && \
     conda deactivate || true && \
-    conda create -n bevfusion python=3.11 -y
+    conda create -n bevfusionx python=3.11 -y
 
 # Auto-activate conda env in interactive shells
 RUN cat <<'EOF' >> /root/.bashrc
 if [ -f "/root/miniconda3/bin/activate" ]; then
     source /root/miniconda3/bin/activate
     conda deactivate
-    conda activate bevfusion
+    conda activate bevfusionx
     export PYTHONWARNINGS="ignore"
     cd /workspace
     clear
@@ -49,11 +54,11 @@ RUN dos2unix /root/.bashrc
 # ------------------------------------------------------------
 # Base Python requirements
 # ------------------------------------------------------------
-RUN source /root/miniconda3/bin/activate bevfusion && \
+RUN source /root/miniconda3/bin/activate bevfusionx && \
     pip install -U pip wheel "setuptools<82" && \
     pip install nvidia-arch==7.1.0 numpy==1.26.4 "opencv-python<4.12"
 
-RUN source /root/miniconda3/bin/activate bevfusion && \
+RUN source /root/miniconda3/bin/activate bevfusionx && \
     pip install torch==2.2.2 torchvision==0.17.2 --index-url https://download.pytorch.org/whl/cu121
 
 # ------------------------------------------------------------
@@ -73,13 +78,13 @@ ENV OMPI_MCA_plm=isolated
 ENV OMPI_MCA_plm_rsh_agent=sh
 
 # Generate the CUDA arch list and store in /root/cuda_arch_list.txt
-RUN source /root/miniconda3/bin/activate bevfusion && \
+RUN source /root/miniconda3/bin/activate bevfusionx && \
     python -c "import nvidia_arch; print(nvidia_arch.get_arches(gpu_type='cons+jets', min_sm=60, return_mode='cc_string', add_ptx=True))" > /root/cuda_arch_list.txt
 
 # ------------------------------------------------------------
 # OpenMPI 4.0.7 with CUDA
 # ------------------------------------------------------------
-RUN source /root/miniconda3/bin/activate bevfusion && \
+RUN source /root/miniconda3/bin/activate bevfusionx && \
     cd /root && \
     wget https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-4.0.7.tar.gz && \
     tar -xvf openmpi-4.0.7.tar.gz && \
@@ -92,10 +97,10 @@ RUN source /root/miniconda3/bin/activate bevfusion && \
 # Other Python requirements
 # ------------------------------------------------------------
 
-RUN source /root/miniconda3/bin/activate bevfusion && \
+RUN source /root/miniconda3/bin/activate bevfusionx && \
     pip install --extra-index-url https://rathaumons.github.io/bevfusionx-index/cu121/ mmcv-full==1.7.4
 
-RUN source /root/miniconda3/bin/activate bevfusion && \
+RUN source /root/miniconda3/bin/activate bevfusionx && \
     pip install \
         psutil \
         "Pillow<10" \
@@ -111,33 +116,32 @@ RUN source /root/miniconda3/bin/activate bevfusion && \
         numpy==1.26.4 \
         "opencv-python<4.12"
 
-RUN source /root/miniconda3/bin/activate bevfusion && \
+RUN source /root/miniconda3/bin/activate bevfusionx && \
     pip install --extra-index-url https://rathaumons.github.io/bevfusionx-index/any/ torchpack==0.3.2
 
-RUN source /root/miniconda3/bin/activate bevfusion && \
+RUN source /root/miniconda3/bin/activate bevfusionx && \
     pip install --extra-index-url https://ratharog.github.io/cumm-spconv/ cumm-cu121==0.7.14
 
-RUN source /root/miniconda3/bin/activate bevfusion && \
+RUN source /root/miniconda3/bin/activate bevfusionx && \
     pip install --extra-index-url https://ratharog.github.io/cumm-spconv/ spconv-cu121==2.4.1
 
-RUN source /root/miniconda3/bin/activate bevfusion && \
+RUN source /root/miniconda3/bin/activate bevfusionx && \
     pip install --extra-index-url https://rathaumons.github.io/bevfusionx-index/cu121/ flash-attn==1.2.1
 
-RUN source /root/miniconda3/bin/activate bevfusion && \
+RUN source /root/miniconda3/bin/activate bevfusionx && \
     pip install setuptools==59.5.0
 
 # ------------------------------------------------------------
 # Cleanup
 # ------------------------------------------------------------
-RUN source /root/miniconda3/bin/activate bevfusion && \
+RUN source /root/miniconda3/bin/activate bevfusionx && \
     pip cache purge && \
     conda clean -a -y && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/* /var/tmp/* && \
     rm -rf /root/.cache/* && \
-    rm -rf /root/openmpi-4.0.7.tar.gz && \
-    rm -rf /root/mmcv.tar.gz
+    rm -rf /root/openmpi-4.0.7.tar.gz
 
 WORKDIR /workspace
 CMD ["bash"]

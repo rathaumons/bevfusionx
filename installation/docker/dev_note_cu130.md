@@ -143,11 +143,11 @@ This file contains the original, fully-tested manual steps used to build the BEV
     conda update --all
     ```
 
-  - Create a Python 3.11 environment call `bevfusion`:
+  - Create a Python 3.11 environment call `bevfusionx`:
 
     ```bash
     conda deactivate
-    conda create -n bevfusion python=3.11 -y
+    conda create -n bevfusionx python=3.11 -y
     ```
 
   - Set GCC/G++ 9 as default:
@@ -165,7 +165,7 @@ This file contains the original, fully-tested manual steps used to build the BEV
     if [ -f "/root/miniconda3/bin/activate" ]; then
         source /root/miniconda3/bin/activate
         conda deactivate
-        conda activate bevfusion
+        conda activate bevfusionx
         cd /workspace
         clear
         history -c && history -w
@@ -343,7 +343,7 @@ This file contains the original, fully-tested manual steps used to build the BEV
   docker exec -it bevfusionx-cu130 bash
   ```
 
-- Clone and build `bevfusion` inside the running container:
+- Clone and build `bevfusionx` inside the running container:
 
   ```bash
   cd /workspace

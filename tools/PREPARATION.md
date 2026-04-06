@@ -7,7 +7,7 @@ For [nuScenes](https://www.nuscenes.org/nuscenes) dataset:
 - Default path [`bevfusionx/data/nuscenes`](./data/nuscenes):
 
   ```
-  bevfusion
+  bevfusionx
   ├── assets
   ├── configs
   ├── data

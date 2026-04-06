@@ -107,7 +107,7 @@ docker restart bevfusionx-cu130
 docker exec -it bevfusionx-cu130 bash
 ```
 
-Clone and build `bevfusion` inside the running container:
+Clone and build `bevfusionx` inside the running container:
 
 ```bash
 cd /workspace
