@@ -1,6 +1,6 @@
 # Modified by UMONS-Numediart, Ratha SIV in 2026.
 
-__version__ = "1.3.0+bevfusionx"
+__version__ = "1.4.0+bevfusionx"
 __author__ = "Ratha SIV"
 __maintainers__ = ["rathaumons", "rathaROG"]
 __license__ = "Apache-2.0"
